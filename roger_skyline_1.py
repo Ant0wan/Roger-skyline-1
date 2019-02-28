@@ -11,4 +11,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-print ("shasum < disk.vdi")
+import os
+# Get the path
+path = os.getcwd()
+# Get the Debian iso
+os.system("curl -O http://ftp.nl.debian.org/debian/dists/stretch/main/installer-amd64/current/images/netboot/mini.iso")
+#print ("shasum < disk.vdi")
