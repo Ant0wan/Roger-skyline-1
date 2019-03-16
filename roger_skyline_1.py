@@ -32,7 +32,7 @@ os.system("VBoxManage modifyvm " + VM_name + " --cpus " + str(cpu) + " --memory 
 os.system("VBoxManage modifyvm " + VM_name + " --nic2 bridged  --bridgeadapter1 " + NAT2)
 os.system("VBoxManage storagectl " + VM_name + " --name IDE --add ide")
 os.system("VBoxManage storageattach " + VM_name + " --storagectl IDE --port 0 --device 0 --type dvddrive --medium mini.iso")
-
+os.system("VBoxManage storageattach " + VM_name + " --storagectl IDE --port 0 --device 0 --medium mini.iso")
 
 #vboxmanage unregistervm MiniDebian
 #print ("https://www.oracle.com/technetwork/articles/servers-storage-admin/manage-vbox-cli-2264359.html")
