@@ -15,3 +15,4 @@ cd ./DESTINATION/
 md5sum `find -follow -type f` > md5sum.txt
 cd ..
 genisoimage -r -J -b isolinux.bin -c boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o preseed-mini.iso ./DESTINATION/
+rm -rf ./DESTINATION/
