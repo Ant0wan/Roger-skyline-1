@@ -8,6 +8,7 @@ cd ./DESTINATION/
 gunzip initrd.gz
 echo ../preseed.cfg | cpio -H newc -o -A -F initrd
 gzip initrd
+cp -f ../isolinux.cfg ./
 cd ..
 chmod -w -R ./DESTINATION/
 cd ./DESTINATION/
