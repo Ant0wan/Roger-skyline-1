@@ -48,15 +48,18 @@ NAT2 = "en0"
 ## Create and configure the VM
 os.system("VBoxManage createvm --name MiniDebian --ostype Debian_64 --register")
 os.system("VBoxManage modifyvm " + VM_name + " --cpus " + str(cpu) + " --memory " + str(RAM))
-#BUG #os.system("VBoxManage modifyvm " + VM_name + " --nic2 bridged  --bridgeadapter1 " + NAT2)
+#BUG#os.system("VBoxManage modifyvm " + VM_name + " --nic2 bridged  --bridgeadapter1 " + NAT2)
 os.system("VBoxManage storagectl " + VM_name + " --name IDE --add ide")
-#os.system("vboxmanage createmedium disk --filename ~/MiniDebianDisk --format VDI --size 8000")
-## Mount the disk vdi
-#os.system("VBoxManage storageattach " + VM_name + " --storagectl SATA --port 0 --device 0 --type hdd --medium ~/MiniDebianDisk.vdi")
+
 ## Mount the iso on the VM
 os.system("VBoxManage storageattach " + VM_name + " --storagectl IDE --port 0 --device 0 --type dvddrive --medium preseed-mini.iso")
 
-# Boot order
+## Create and mount the disk vdi
+os.system("vboxmanage createmedium disk --filename diskdebianmini --size 8000 --format VDI")
+os.system("VBoxManage storageattach " + VM_name + " --storagectl IDE --port 1 --device 1 --type hdd --medium diskdebianmini.vdi")
+#OLD#os.system("VBoxManage storagectl " + VM_name + " --name diskdebianmini.vdi --add ide --bootable on")
+
+## Boot order
 os.system("vboxmanage modifyvm " + VM_name + " --boot1 disk")
 os.system("vboxmanage modifyvm " + VM_name + " --boot2 dvd")
 os.system("vboxmanage modifyvm " + VM_name + " --boot3 none")
