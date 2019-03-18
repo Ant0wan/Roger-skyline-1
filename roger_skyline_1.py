@@ -29,21 +29,6 @@ NAT2 = "en0"
 
 ## Adding the preseed.cfg file to Initrd
 #os.system("./build_iso.sh")
-#os.system("mkdir ./DESTINATION/")
-#os.system("bsdtar -C ./DESTINATION/ -xf mini.iso")
-#os.system("chmod +w -R ./DESTINATION/")
-#os.system("cd ./DESTINATION/")
-#os.system("gunzip initrd.gz")
-#os.system("echo ../preseed.cfg | cpio -H newc -o -A -F initrd")
-#os.system("gzip initrd")
-#os.system("cp -f ../isolinux.cfg ./")
-#os.system("cd ..")
-#os.system("chmod -w -R ./DESTINATION/")
-#os.system("cd ./DESTINATION/")
-#os.system("md5sum `find -follow -type f` > md5sum.txt")
-#os.system("cd ..")
-#os.system("genisoimage -r -J -b isolinux.bin -c boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o preseed-mini.iso ./DESTINATION/")
-#os.system("rm -rf ./DESTINATION/")
 
 ## Create and configure the VM
 os.system("VBoxManage createvm --name MiniDebian --ostype Debian_64 --register")
