@@ -24,35 +24,42 @@ RAM = 2048
 NAT2 = "en0"
 
 ## Get the Debian iso
-os.system("curl -O http://ftp.nl.debian.org/debian/dists/stretch/main/installer-amd64/current/images/netboot/mini.iso")
+#os.system("curl -O http://ftp.nl.debian.org/debian/dists/stretch/main/installer-amd64/current/images/netboot/mini.iso")
 
 
 ## Adding the preseed.cfg file to Initrd
 #os.system("./build_iso.sh")
-os.system("mkdir ./DESTINATION/")
-os.system("bsdtar -C ./DESTINATION/ -xf mini.iso")
-os.system("chmod +w -R ./DESTINATION/")
-os.system("cd ./DESTINATION/")
-os.system("gunzip initrd.gz")
-os.system("echo ../preseed.cfg | cpio -H newc -o -A -F initrd")
-os.system("gzip initrd")
-os.system("cp -f ../isolinux.cfg ./")
-os.system("cd ..")
-os.system("chmod -w -R ./DESTINATION/")
-os.system("cd ./DESTINATION/")
-os.system("md5sum `find -follow -type f` > md5sum.txt")
-os.system("cd ..")
-os.system("genisoimage -r -J -b isolinux.bin -c boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o preseed-mini.iso ./DESTINATION/")
-os.system("rm -rf ./DESTINATION/")
+#os.system("mkdir ./DESTINATION/")
+#os.system("bsdtar -C ./DESTINATION/ -xf mini.iso")
+#os.system("chmod +w -R ./DESTINATION/")
+#os.system("cd ./DESTINATION/")
+#os.system("gunzip initrd.gz")
+#os.system("echo ../preseed.cfg | cpio -H newc -o -A -F initrd")
+#os.system("gzip initrd")
+#os.system("cp -f ../isolinux.cfg ./")
+#os.system("cd ..")
+#os.system("chmod -w -R ./DESTINATION/")
+#os.system("cd ./DESTINATION/")
+#os.system("md5sum `find -follow -type f` > md5sum.txt")
+#os.system("cd ..")
+#os.system("genisoimage -r -J -b isolinux.bin -c boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o preseed-mini.iso ./DESTINATION/")
+#os.system("rm -rf ./DESTINATION/")
 
 ## Create and configure the VM
 os.system("VBoxManage createvm --name MiniDebian --ostype Debian_64 --register")
 os.system("VBoxManage modifyvm " + VM_name + " --cpus " + str(cpu) + " --memory " + str(RAM))
 #BUG #os.system("VBoxManage modifyvm " + VM_name + " --nic2 bridged  --bridgeadapter1 " + NAT2)
 os.system("VBoxManage storagectl " + VM_name + " --name IDE --add ide")
-
+#os.system("vboxmanage createmedium disk --filename ~/MiniDebianDisk --format VDI --size 8000")
+## Mount the disk vdi
+#os.system("VBoxManage storageattach " + VM_name + " --storagectl SATA --port 0 --device 0 --type hdd --medium ~/MiniDebianDisk.vdi")
 ## Mount the iso on the VM
-os.system("VBoxManage storageattach " + VM_name + " --storagectl IDE --port 0 --device 0 --type dvddrive --medium mini.iso")
+os.system("VBoxManage storageattach " + VM_name + " --storagectl IDE --port 0 --device 0 --type dvddrive --medium preseed-mini.iso")
+
+# Boot order
+os.system("vboxmanage modifyvm " + VM_name + " --boot1 disk")
+os.system("vboxmanage modifyvm " + VM_name + " --boot2 dvd")
+os.system("vboxmanage modifyvm " + VM_name + " --boot3 none")
 
 ## Unmount the iso from the VM
 #os.system("VBoxManage storageattach " + VM_name + " --storagectl IDE --port 0 --device 0 --medium none")
