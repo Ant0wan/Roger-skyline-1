@@ -16,14 +16,6 @@ import os
 ## Get the path
 path = os.getcwd()
 
-## Virtual Machine Info
-VM_name = "MiniDebian"
-VM_type = "Debian_64"
-cpu = 2
-ram = 2048
-disk_size = 8000
-NAT2 = "en0"
-
 ## Get the Debian iso()
 def download_iso()
     os.system("curl -O http://ftp.nl.debian.org/debian/dists/stretch/main/installer-amd64/current/images/netboot/mini.iso")
@@ -33,9 +25,11 @@ def launch_build()
     os.system("./build_iso.sh")
 
 ## Create and configure the VM
-def configure_vm(VM_name, cpu, ram)
-    os.system("VBoxManage createvm --name MiniDebian --ostype Debian_64 --register")
+def configure_vm(VM_name, cpu, ram, OS_type, disk_size)
+    os.system("VBoxManage createvm --name " + VM_name + " --ostype " + OS_type + " --register")
     os.system("VBoxManage modifyvm " + VM_name + " --cpus " + str(cpu) + " --memory " + str(ram))
+    create_disk(VM_name, disk_size)
+    boot_order(VM_name)
     #BUG#os.system("VBoxManage modifyvm " + VM_name + " --nic2 bridged  --bridgeadapter1 " + NAT2)
 
 ## Mount the iso on the VM
@@ -68,6 +62,19 @@ def shutdown_vm(VM_name)
 def delete_vm(VM_name)
     os.system("vboxmanage unregistervm " + VM_name + " --delete")
 
+def main():
+    ## Virtual Machine Info
+    VM_name = "MiniDebian"
+    OS_type = "Debian_64"
+    cpu = 2
+    ram = 2048
+    disk_size = 8000
+    NAT2 = "en0"
+    # Functions call
+    download_iso()
+    configure_vm(VM_name, cpu, ram, OS_type)
 
+if __name__ == '__main__':
+    main()
 #print ("https://www.oracle.com/technetwork/articles/servers-storage-admin/manage-vbox-cli-2264359.html")
 ##print ("shasum < disk.vdi")
