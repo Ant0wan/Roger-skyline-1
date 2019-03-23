@@ -35,17 +35,21 @@ def configure_vm(VM_name, cpu, ram, OS_type, disk_size)
 ## Mount the iso on the VM
 ## Create and mount the disk vdi
 def create_disk(VM_name, disk_size):
-    os.system("VBoxManage storagectl " + VM_name + " --name IDE --add ide")
-    os.system("VBoxManage storageattach " + VM_name + " --storagectl IDE --port 0 --device 0 --type dvddrive --medium preseed-mini.iso")
-    os.system("VBoxManage storagectl " + VM_name + " --name SATA --add SATA")
-    os.system("vboxmanage createmedium disk --filename diskdebianmini --size " + disk_size + " --format VDI")
-    os.system("VBoxManage storageattach " + VM_name + " --storagectl SATA --port 0 --device 0 --type hdd --medium diskdebianmini.vdi")
+    storage = ["IDE", "SATA"]
+    disk_name = "diskdebianmini"
+    disk_file_format = "vdi"
+    disk_type = "hdd"
+    for a_type in storage:
+        os.system("VBoxManage storagectl " + VM_name + " --name " + a_type + " --add " + a_type)
+    os.system("VBoxManage storageattach " + VM_name + " --storagectl " + storage[0] + " --port 0 --device 0 --type dvddrive --medium preseed-mini.iso")
+    os.system("vboxmanage createmedium disk --filename " + disk_name + " --size " + disk_size + " --format " + disk_file_format)
+    os.system("VBoxManage storageattach " + VM_name + " --storagectl " + storage[1] + " --port 0 --device 0 --type " + disk_type + " --medium " + disk_name + "." + disk_file_format)
 
 ## Boot order
 def boot_order(VM_name):
-    os.system("vboxmanage modifyvm " + VM_name + " --boot1 disk")
-    os.system("vboxmanage modifyvm " + VM_name + " --boot2 dvd")
-    os.system("vboxmanage modifyvm " + VM_name + " --boot3 none")
+    boot_devices = ["disk", "dvd", "none"]
+    for device in boot_devices:
+        os.system("vboxmanage modifyvm " + VM_name + " --boot"(boot_devices.index(device) + 1) + " " + device)
 
 ## Unmount the iso from the VM
 def unmount_iso(VM_name)
@@ -63,7 +67,7 @@ def delete_vm(VM_name)
     os.system("vboxmanage unregistervm " + VM_name + " --delete")
 
 def main():
-    ## Virtual Machine Info
+    ## Virtual Machine Info  
     VM_name = "MiniDebian"
     OS_type = "Debian_64"
     cpu = 2
