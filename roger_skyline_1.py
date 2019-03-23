@@ -35,10 +35,10 @@ def configure_vm(VM_name, cpu, ram, OS_type, disk_size)
 ## Mount the iso on the VM
 ## Create and mount the disk vdi
 def create_disk(VM_name, disk_size):
-    storage = ["IDE", "SATA"]
-    disk_name = "diskdebianmini"
-    disk_file_format = "vdi"
-    disk_type = "hdd"
+    storage = ('IDE', 'SATA')
+    disk_name = 'diskdebianmini'
+    disk_file_format = 'vdi'
+    disk_type = 'hdd'
     for a_type in storage:
         os.system("VBoxManage storagectl " + VM_name + " --name " + a_type + " --add " + a_type)
     os.system("VBoxManage storageattach " + VM_name + " --storagectl " + storage[0] + " --port 0 --device 0 --type dvddrive --medium preseed-mini.iso")
@@ -47,10 +47,11 @@ def create_disk(VM_name, disk_size):
 
 ## Boot order
 def boot_order(VM_name):
-    boot_devices = ["disk", "dvd", "none"]
+    boot_devices = ('disk', 'dvd', 'none')
     for device in boot_devices:
         os.system("vboxmanage modifyvm " + VM_name + " --boot"(boot_devices.index(device) + 1) + " " + device)
 
+'''
 ## Unmount the iso from the VM
 def unmount_iso(VM_name)
     os.system("VBoxManage storageattach " + VM_name + " --storagectl IDE --port 0 --device 0 --medium none")
@@ -65,20 +66,22 @@ def shutdown_vm(VM_name)
 
 def delete_vm(VM_name)
     os.system("vboxmanage unregistervm " + VM_name + " --delete")
+'''
 
 def main():
     ## Virtual Machine Info  
-    VM_name = "MiniDebian"
-    OS_type = "Debian_64"
+    VM_name = 'MiniDebian'
+    OS_type = 'Debian_64'
     cpu = 2
     ram = 2048
     disk_size = 8000
-    NAT2 = "en0"
+    NAT2 = 'en0'
     # Functions call
     download_iso()
     configure_vm(VM_name, cpu, ram, OS_type)
 
 if __name__ == '__main__':
     main()
+
 #print ("https://www.oracle.com/technetwork/articles/servers-storage-admin/manage-vbox-cli-2264359.html")
 ##print ("shasum < disk.vdi")
