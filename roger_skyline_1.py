@@ -12,6 +12,7 @@
 # **************************************************************************** #
 
 import os
+import sys
 
 ## Get the path
 path = os.getcwd()
@@ -68,7 +69,7 @@ def delete_vm(VM_name)
     os.system("vboxmanage unregistervm " + VM_name + " --delete")
 '''
 
-def main():
+def main(arg):
     ## Virtual Machine Info  
     VM_name = 'MiniDebian'
     OS_type = 'Debian_64'
@@ -81,7 +82,18 @@ def main():
     configure_vm(VM_name, cpu, ram, OS_type)
 
 if __name__ == '__main__':
-    main()
+    i = 0
+    while sys.argv[i:]:
+        i += 1
+    if i > 2:
+        print(__name__ + ' cannot take more than 2 arguments.\nUsage: ' + __name__ + ' [option]\nOptions:\n\tstart: start the VM\n\tstop: poweroff the VM\n\tdelete: stop and delete the VM with its disk\n')
+    else:
+         try:
+            main(sys.argv[1])
+        except (ValueError, TypeError, AttributeError, SyntaxError):
+            return None
+        else:
+            return None
 
 #print ("https://www.oracle.com/technetwork/articles/servers-storage-admin/manage-vbox-cli-2264359.html")
 ##print ("shasum < disk.vdi")
