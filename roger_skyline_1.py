@@ -28,7 +28,7 @@ def launch_build()
 ## Create and configure the VM
 def configure_vm(VM_name, cpu, ram, OS_type, disk_size)
     os.system("VBoxManage createvm --name " + VM_name + " --ostype " + OS_type + " --register")
-    os.system("VBoxManage modifyvm " + VM_name + " --cpus " + str(cpu) + " --memory " + str(ram))
+    os.system("VBoxManage modifyvm " + VM_name + " --cpus " + cpu + " --memory " + ram)
     create_disk(VM_name, disk_size)
     boot_order(VM_name)
     #BUG#os.system("VBoxManage modifyvm " + VM_name + " --nic2 bridged  --bridgeadapter1 " + NAT2)
@@ -56,7 +56,7 @@ def boot_order(VM_name):
 ## Unmount the iso from the VM
 def unmount_iso(VM_name)
     os.system("VBoxManage storageattach " + VM_name + " --storagectl IDE --port 0 --device 0 --medium none")
-
+'''
 ## Start the VM
 def start_vm(VM_name)
     os.system("vboxmanage startvm " + VM_name + " --type headless")
@@ -67,19 +67,26 @@ def shutdown_vm(VM_name)
 
 def delete_vm(VM_name)
     os.system("vboxmanage unregistervm " + VM_name + " --delete")
-'''
 
 def main(arg):
     ## Virtual Machine Info  
     VM_name = 'MiniDebian'
     OS_type = 'Debian_64'
-    cpu = 2
-    ram = 2048
-    disk_size = 8000
+    cpu = str(2)
+    ram = str(2048)
+    disk_size = str(8000)
     NAT2 = 'en0'
-    # Functions call
-    download_iso()
-    configure_vm(VM_name, cpu, ram, OS_type)
+    if arg == 'stop':
+        shutdown_vm(VM_name)
+    elif arg == 'start':
+        start_vm(VM_name)
+    elif arg == 'delete':
+        shutdown_vm(VM_name)
+        delete_vm(VM_name)
+    else:
+        # Functions call
+        download_iso()
+        configure_vm(VM_name, cpu, ram, OS_type)
 
 if __name__ == '__main__':
     i = 0
@@ -88,12 +95,15 @@ if __name__ == '__main__':
     if i > 2:
         print(__name__ + ' cannot take more than 2 arguments.\nUsage: ' + __name__ + ' [option]\nOptions:\n\tstart: start the VM\n\tstop: poweroff the VM\n\tdelete: stop and delete the VM with its disk\n')
     else:
-         try:
-            main(sys.argv[1])
-        except (ValueError, TypeError, AttributeError, SyntaxError):
-            return None
+        if i == 1
+            main()
         else:
-            return None
+            try:
+                main(sys.argv[1])
+            except (ValueError, TypeError, AttributeError, SyntaxError):
+                return None
+            else:
+                return None
 
 #print ("https://www.oracle.com/technetwork/articles/servers-storage-admin/manage-vbox-cli-2264359.html")
 ##print ("shasum < disk.vdi")
