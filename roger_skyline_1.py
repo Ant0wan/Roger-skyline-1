@@ -18,15 +18,15 @@ import sys
 path = os.getcwd()
 
 ## Get the Debian iso()
-def download_iso()
+def download_iso():
     os.system("curl -O http://ftp.nl.debian.org/debian/dists/stretch/main/installer-amd64/current/images/netboot/mini.iso")
 
 ## Adding the preseed.cfg file to Initrd
-def launch_build()
+def launch_build():
     os.system("./build_iso.sh")
 
 ## Create and configure the VM
-def configure_vm(VM_name, cpu, ram, OS_type, disk_size)
+def configure_vm(VM_name, cpu, ram, OS_type, disk_size):
     os.system("VBoxManage createvm --name " + VM_name + " --ostype " + OS_type + " --register")
     os.system("VBoxManage modifyvm " + VM_name + " --cpus " + cpu + " --memory " + ram)
     create_disk(VM_name, disk_size)
@@ -54,18 +54,18 @@ def boot_order(VM_name):
 
 '''
 ## Unmount the iso from the VM
-def unmount_iso(VM_name)
+def unmount_iso(VM_name):
     os.system("VBoxManage storageattach " + VM_name + " --storagectl IDE --port 0 --device 0 --medium none")
 '''
 ## Start the VM
-def start_vm(VM_name)
+def start_vm(VM_name):
     os.system("vboxmanage startvm " + VM_name + " --type headless")
 
 ## Delete the VM
-def shutdown_vm(VM_name)
+def shutdown_vm(VM_name):
     os.system("vboxmanage shutdown " + VM_name)
 
-def delete_vm(VM_name)
+def delete_vm(VM_name):
     os.system("vboxmanage unregistervm " + VM_name + " --delete")
 
 def main(arg):
@@ -86,7 +86,7 @@ def main(arg):
     else:
         # Functions call
         download_iso()
-        configure_vm(VM_name, cpu, ram, OS_type)
+    #    configure_vm(VM_name, cpu, ram, OS_type)
 
 if __name__ == '__main__':
     i = 0
@@ -94,16 +94,10 @@ if __name__ == '__main__':
         i += 1
     if i > 2:
         print(__name__ + ' cannot take more than 2 arguments.\nUsage: ' + __name__ + ' [option]\nOptions:\n\tstart: start the VM\n\tstop: poweroff the VM\n\tdelete: stop and delete the VM with its disk\n')
-    else:
-        if i == 1
-            main()
-        else:
-            try:
-                main(sys.argv[1])
-            except (ValueError, TypeError, AttributeError, SyntaxError):
-                return None
-            else:
-                return None
+    elif i == 1:
+        main("")
+    elif i == 2:
+        main(sys.argv[1])
 
 #print ("https://www.oracle.com/technetwork/articles/servers-storage-admin/manage-vbox-cli-2264359.html")
 ##print ("shasum < disk.vdi")
