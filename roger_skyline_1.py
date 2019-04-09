@@ -17,14 +17,6 @@ import sys
 ## Get the path
 path = os.getcwd()
 
-## Get the Debian iso()
-def download_iso():
-    os.system("curl -O http://ftp.nl.debian.org/debian/dists/stretch/main/installer-amd64/current/images/netboot/mini.iso")
-
-## Adding the preseed.cfg file to Initrd
-def launch_build():
-    os.system("./build_iso.sh")
-
 ## Create and configure the VM
 def configure_vm(VM_name, cpu, ram, OS_type, disk_size):
     os.system("VBoxManage createvm --name " + VM_name + " --ostype " + OS_type + " --register")
@@ -84,9 +76,7 @@ def main(arg):
         shutdown_vm(VM_name)
         delete_vm(VM_name)
     else:
-        # Functions call
-        download_iso()
-    #    configure_vm(VM_name, cpu, ram, OS_type)
+        configure_vm(VM_name, cpu, ram, OS_type)
 
 if __name__ == '__main__':
     i = 0
