@@ -1,11 +1,36 @@
 #!/bin/bash
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    build_iso.sh                                       :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/04/10 13:02:22 by abarthel          #+#    #+#              #
+#    Updated: 2019/04/10 13:02:22 by abarthel         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-## Adding the preseed.cfg file to Initrd
+##
+## CAUTION: This script will not run on 42's Macs. Run it on a Debian virtual
+## machine as a root/sudo user.
+##
+## DESCRIPTION: The script will update packages concerning the tools needed
+## for the image build.
+## It will first download the mini.iso - a Debian version -  then modify it
+## with the pressed.cfg and isolinux.cfg files in the current directory.
+##
+
+# Update packages
 apt-get install -y curl
 apt-get install -y bsdtar
 apt-get install -y gzip
 apt-get install -y genisoimage
+
+# Download mini.iso
 curl -O http://ftp.nl.debian.org/debian/dists/stretch/main/installer-amd64/current/images/netboot/mini.iso
+
+# Extract, modify then build the iso
 mkdir ./DESTINATION/
 bsdtar -C ./DESTINATION/ -xf mini.iso
 chmod +w -R ./DESTINATION/
