@@ -11,8 +11,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-import os
 import sys
+from os import system, getcwd
 
 ## Get the path
 path = os.getcwd()
