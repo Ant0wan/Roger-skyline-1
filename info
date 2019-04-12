@@ -1,6 +1,6 @@
-VM_name = 'MiniDebian'
-OS_type = 'Debian_64'
-cpu = str(2)
-ram = str(2048)
-disk_size = str(8000)
-NAT2 = 'en0'
+VM_name = MiniDebian
+OS_type = Debian_64
+cpu = 2
+ram = 2048
+disk_size = 8000
+NAT2 = en0

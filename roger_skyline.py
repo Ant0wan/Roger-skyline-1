@@ -19,17 +19,17 @@ from src.parser import parser
 path = getcwd()
 
 def main(arg):
-    info_dict = {}
-    parser(info_dict)
-#    if arg == 'stop':
-#        shutdown_vm(VM_name)
-#    elif arg == 'start':
-#        start_vm(VM_name)
-#    elif arg == 'delete':
-#        shutdown_vm(VM_name)
-#        delete_vm(VM_name)
-#    else:
-#        configure_vm(VM_name, cpu, ram, OS_type, disk_size)
+    dinfo = {}
+    parser(dinfo)
+    if arg == 'stop':
+        shutdown_vm(dinfo['VM_name'])
+    elif arg == 'start':
+        start_vm(dinfo['VM_name'])
+    elif arg == 'delete':
+        shutdown_vm(dinfo['VM_name'])
+        delete_vm(dinfo['VM_name'])
+    else:
+        configure_vm(dinfo)
 
 if __name__ == '__main__':
     i = 0

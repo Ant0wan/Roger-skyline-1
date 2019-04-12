@@ -14,12 +14,14 @@
 import sys
 from os import system
 
-## Create and configure the VM
-def configure_vm(VM_name, cpu, ram, OS_type, disk_size):
-    system("VBoxManage createvm --name " + VM_name + " --ostype " + OS_type + " --register")
-    system("VBoxManage modifyvm " + VM_name + " --cpus " + cpu + " --memory " + ram)
-    create_disk(VM_name, disk_size)
-    boot_order(VM_name)
+def configure_vm(dinfo):
+    system("VBoxManage createvm --name " + dinfo['VM_name'] \
+            + " --ostype " + dinfo['OS_type'] + " --register")
+    system("VBoxManage modifyvm " + dinfo['VM_name'] \
+            + " --cpus " + dinfo['cpu'] \
+            + " --memory " + dinfo['ram'])
+    create_disk(dinfo['VM_name'], dinfo['disk_size'])
+    boot_order(dinfo['VM_name'])
     #BUG#os.system("VBoxManage modifyvm " + VM_name + " --nic2 bridged  --bridgeadapter1 " + NAT2)
 
 ## Mount the iso on the VM
