@@ -11,29 +11,25 @@
 #                                                                              #
 # **************************************************************************** #
 
-from os import system, getcwd
 import sys
+from os import system, getcwd
 from src.createvm import *
+from src.parser import parser
 
 path = getcwd()
 
 def main(arg):
-## Virtual Machine Info
-    VM_name = 'MiniDebian'
-    OS_type = 'Debian_64'
-    cpu = str(2)
-    ram = str(2048)
-    disk_size = str(8000)
-    NAT2 = 'en0'
-    if arg == 'stop':
-        shutdown_vm(VM_name)
-    elif arg == 'start':
-        start_vm(VM_name)
-    elif arg == 'delete':
-        shutdown_vm(VM_name)
-        delete_vm(VM_name)
-    else:
-        configure_vm(VM_name, cpu, ram, OS_type, disk_size)
+    info_dict = {}
+    parser(info_dict)
+#    if arg == 'stop':
+#        shutdown_vm(VM_name)
+#    elif arg == 'start':
+#        start_vm(VM_name)
+#    elif arg == 'delete':
+#        shutdown_vm(VM_name)
+#        delete_vm(VM_name)
+#    else:
+#        configure_vm(VM_name, cpu, ram, OS_type, disk_size)
 
 if __name__ == '__main__':
     i = 0
