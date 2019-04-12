@@ -11,8 +11,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-import sys
 from os import system, getcwd
+import sys
 
 ## Get the path
 path = getcwd()
