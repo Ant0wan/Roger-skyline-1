@@ -11,24 +11,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-#from setuptools import setup, find_packages
 from os import system, getcwd
 import sys
-
-#with open('README.md') as f:
-#    readme = f.read()
-
-#setup(
-#    name='roger-skyline-1',
-#    version='0.0.1',
-#    description='Script for VirtualBox virtual machine and Apache web server \
-#                deployment automation. [a 42 project]',
-#    long_description=readme,
-#    author='Antoine Barthelemy',
-#    author_email='abarthel@student.42.fr',
-#    url='https://github.com/Ant0wan/Roger-skyline-1.git',
-#    license='GPL-3.0-or-later',
-#    packages=find_packages()
-#)
-
 
