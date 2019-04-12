@@ -2,7 +2,7 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    roger_skyline_1.py                                 :+:      :+:    :+:    #
+#    createvm.py                                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
@@ -11,11 +11,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-from os import system, getcwd
 import sys
-
-## Get the path
-path = getcwd()
+from os import system
 
 ## Create and configure the VM
 def configure_vm(VM_name, cpu, ram, OS_type, disk_size):
@@ -42,7 +39,8 @@ def create_disk(VM_name, disk_size):
 def boot_order(VM_name):
     boot_devices = ('disk', 'dvd', 'none')
     for device in boot_devices:
-        system("vboxmanage modifyvm " + VM_name + " --boot"(boot_devices.index(device) + 1) + " " + device)
+        print(boot_devices.index(device))
+ #       system("vboxmanage modifyvm " + VM_name + " --boot"(boot_devices.index(device) + 1) + " " + device)
 
 '''
 ## Unmount the iso from the VM
@@ -59,35 +57,6 @@ def shutdown_vm(VM_name):
 
 def delete_vm(VM_name):
     system("vboxmanage unregistervm " + VM_name + " --delete")
-
-def main(arg):
-    ## Virtual Machine Info  
-    VM_name = 'MiniDebian'
-    OS_type = 'Debian_64'
-    cpu = str(2)
-    ram = str(2048)
-    disk_size = str(8000)
-    NAT2 = 'en0'
-    if arg == 'stop':
-        shutdown_vm(VM_name)
-    elif arg == 'start':
-        start_vm(VM_name)
-    elif arg == 'delete':
-        shutdown_vm(VM_name)
-        delete_vm(VM_name)
-    else:
-        configure_vm(VM_name, cpu, ram, OS_type)
-
-if __name__ == '__main__':
-    i = 0
-    while sys.argv[i:]:
-        i += 1
-    if i > 2:
-        print(__name__ + ' cannot take more than 2 arguments.\nUsage: ' + __name__ + ' [option]\nOptions:\n\tstart: start the VM\n\tstop: poweroff the VM\n\tdelete: stop and delete the VM with its disk\n')
-    elif i == 1:
-        main("")
-    elif i == 2:
-        main(sys.argv[1])
 
 #print ("https://www.oracle.com/technetwork/articles/servers-storage-admin/manage-vbox-cli-2264359.html")
 ##print ("shasum < disk.vdi")
