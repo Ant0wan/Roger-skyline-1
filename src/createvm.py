@@ -39,7 +39,7 @@ def create_disk(VM_name, disk_size):
 def boot_order(VM_name):
     boot_devices = ('disk', 'dvd', 'none')
     for device in boot_devices:
-        print(boot_devices.index(device))
+        print(boot_devices.index(device) + 1)
  #       system("vboxmanage modifyvm " + VM_name + " --boot"(boot_devices.index(device) + 1) + " " + device)
 
 '''
@@ -53,7 +53,7 @@ def start_vm(VM_name):
 
 ## Delete the VM
 def shutdown_vm(VM_name):
-    system("vboxmanage shutdown " + VM_name)
+    system("vboxmanage controlvm " + VM_name + " acpipowerbutton")
 
 def delete_vm(VM_name):
     system("vboxmanage unregistervm " + VM_name + " --delete")
