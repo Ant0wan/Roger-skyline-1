@@ -1,19 +1,17 @@
+#!/usr/bin/python3
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    parser.py                                          :+:      :+:    :+:    #
+#    start.py                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/04/12 18:02:46 by abarthel          #+#    #+#              #
-#    Updated: 2019/04/17 09:39:30 by abarthel         ###   ########.fr        #
+#    Created: 2019/02/25 18:26:40 by abarthel          #+#    #+#              #
+#    Updated: 2019/02/25 18:26:40 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-def parser(filename):
-    dinfo = {}
-    info = open(filename)
-    for line in info:
-        line = line.split(" = ")
-        dinfo[line[0]] = line[1].strip("\n")
-    return (dinfo)
+from os import system
+
+def start_vm(VM_name):
+    system("vboxmanage startvm " + VM_name + " --type headless")

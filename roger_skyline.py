@@ -13,14 +13,17 @@
 
 import sys
 from os import system, getcwd
-from src.createvm import *
 from src.parser import parser
+from src.createvm import configure_vm
+from src.shutdown import shutdown_vm
+from src.start import start_vm
+from src.delete import delete_vm
 
+info = "info"
 path = getcwd()
 
 def main(arg):
-    dinfo = {}
-    parser(dinfo)
+    dinfo = parser(info)
     if arg == 'stop':
         shutdown_vm(dinfo['VM_name'])
     elif arg == 'start':
