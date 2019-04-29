@@ -19,14 +19,15 @@ def configure_vm(dinfo):
     system("vboxmanage modifyvm " + dinfo['VM_name'] \
             + " --cpus " + dinfo['cpu'] \
             + " --memory " + dinfo['ram'])
-    create_disk(dinfo['VM_name'], dinfo['disk_size'], dinfo['iso_path'], dinfo['disk_pathname'])
+    create_disk(dinfo['VM_name'], dinfo['disk_size'], dinfo['iso_path'], \
+            dinfo['disk_pathname'], dinfo['disk_file_format'], \
+            dinfo['disk_type'])
     boot_order(dinfo['VM_name'])
 #BUG#    system("VBoxManage modifyvm " + VM_name + " --nic2 bridged  --bridgeadapter1 " + NAT2)
 
-def create_disk(VM_name, disk_size, iso_path, disk_pathname):
+def create_disk(VM_name, disk_size, iso_path, disk_pathname, disk_file_format, \
+        disk_type):
     storage = ('IDE', 'SATA')
-    disk_file_format = 'vdi'
-    disk_type = 'hdd'
     for a_type in storage:
         system("VBoxManage storagectl " + VM_name \
                 + " --name " + a_type + " --add " + a_type)
