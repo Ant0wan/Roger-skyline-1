@@ -28,5 +28,5 @@ def start_vm(VM_name):
             if '1' not in status:
                 print ("OS installed")
                 break
-            else
+            else:
                 time.sleep(5)
