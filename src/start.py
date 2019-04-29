@@ -13,16 +13,20 @@
 
 import subprocess
 from time import sleep
-from os import system
+from os import system, popen
 
 def start_vm(VM_name):
     system("vboxmanage startvm " + VM_name + " --type headless")
-#    # Sould use a subprocess with that command waiting, here in the script a wait function could be used
- #   i = 1
-   # print ("\n\n")
-  #  args = shlex.split("vboxmanage showvminfo 'MiniDebian' | grep -c running")
-   # print (args)
-   #while check_output("vboxmanage showvminfo 'MiniDebian' | grep -c running", shell=True):
-   #     sleep(i)
-   # print ("OS installed")
-
+    time.sleep(1)
+    status = popen("vboxmanage showvminfo 'MiniDebian' | grep -c 'powered off'").read()
+    if '1' in str(status):
+        print ("Could not start the VM")
+        exit()
+    else:
+        while True:
+            status = popen("vboxmanage showvminfo 'MiniDebian' | grep -c running").read()
+            if '1' not in status:
+                print ("OS installed")
+                break
+            else
+                time.sleep(5)
