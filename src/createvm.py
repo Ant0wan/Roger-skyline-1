@@ -23,7 +23,7 @@ def configure_vm(dinfo):
             dinfo['disk_pathname'], dinfo['disk_file_format'], \
             dinfo['disk_type'])
     boot_order(dinfo['VM_name'])
-#BUG#    system("VBoxManage modifyvm " + VM_name + " --nic2 bridged  --bridgeadapter1 " + NAT2)
+    system("vboxmanage modifyvm " + dinfo['VM_name'] + " --nic2 bridged  --bridgeadapter1 " + dinfo['bridge'])
 
 def create_disk(VM_name, disk_size, iso_path, disk_pathname, disk_file_format, \
         disk_type):
