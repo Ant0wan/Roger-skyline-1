@@ -5,4 +5,4 @@ ram = 2048
 disk_size = 8000
 NAT2 = en0
 iso_path = ./iso/preseed-mini.iso
-VDI_path = /tmp/
+disk_pathname = /tmp/diskdebianmini
