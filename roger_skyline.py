@@ -16,8 +16,9 @@ from os import system, getcwd
 from src.parser import parser
 from src.createvm import configure_vm
 from src.shutdown import shutdown_vm
-from src.start import start_vm
+from src.install_os import install_os
 from src.delete import delete_vm
+from src.start import start_vm
 
 info = "info"
 path = getcwd()
@@ -31,8 +32,11 @@ def main(arg):
     elif arg == 'delete':
         shutdown_vm(dinfo['VM_name'])
         delete_vm(dinfo['VM_name'])
+    elif arg == 'config':
+        configure_vm(dinfo)
     else:
         configure_vm(dinfo)
+        install_os(dinfo['VM_name'])
 
 if __name__ == '__main__':
     i = 0

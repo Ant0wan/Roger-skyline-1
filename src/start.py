@@ -11,26 +11,16 @@
 #                                                                              #
 # **************************************************************************** #
 
-import time
-import subprocess
-from time import sleep
-from os import system, popen
+from os import system
 
+## Start the VM
 def start_vm(VM_name):
     system("vboxmanage startvm " + VM_name + " --type headless")
-    time.sleep(1)
-    status = popen("vboxmanage showvminfo '" \
-            + VM_name + "' | grep -c 'powered off'").read()
-    if '1' in str(status):
-        print ("Could not start the VM " + VM_name)
-        exit()
-    else:
-        print ("Installing operating system on " + VM_name + ".")
-        while True:
-            status = popen("vboxmanage showvminfo '" \
-                    + VM_name + "' | grep -c running").read()
-            if '1' not in status:
-                print ("Operating system successfully installed.")
-                break
-            else:
-                time.sleep(5)
+
+'''
+## Unmount the iso from the VM
+def unmount_iso(VM_name):
+    os.system("VBoxManage storageattach " + VM_name + " --storagectl IDE --port 0 --device 0 --medium none")
+'''
+#print ("https://www.oracle.com/technetwork/articles/servers-storage-admin/manage-vbox-cli-2264359.html")
+##print ("shasum < disk.vdi")
