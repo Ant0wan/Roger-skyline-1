@@ -1,10 +1,10 @@
-VM_name = MiniDebian
+VM_name = TestDebian
 OS_type = Debian_64
 cpu = 4
-ram = 4096
+ram = 2048
 disk_size = 8000
 bridge = en0
 iso_path = ./iso/preseed-mini.iso
-disk_pathname = /tmp/diskdebianmini
+disk_pathname = /tmp/diskdebianminitest
 disk_file_format = vdi
 disk_type = hdd
