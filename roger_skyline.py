@@ -36,7 +36,7 @@ def main(arg):
         configure_vm(dinfo)
     else:
         configure_vm(dinfo)
-#        install_os(dinfo['VM_name'])
+        install_os(dinfo['VM_name'])
 
 if __name__ == '__main__':
     i = 0
