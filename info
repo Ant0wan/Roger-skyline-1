@@ -1,7 +1,7 @@
 VM_name = TestDebian
 OS_type = Debian_64
 cpu = 4
-ram = 2048
+ram = 1024
 disk_size = 8000
 bridge = en0
 iso_path = ./iso/preseed-mini.iso
