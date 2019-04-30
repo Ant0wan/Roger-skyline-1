@@ -48,6 +48,7 @@ def boot_order(VM_name):
                 + " --boot" + str(boot_devices.index(device) + 1) \
                 + " " + device)
 
-#BUGS#
 #def set_network(dinfo):
-#    system("vboxmanage modifyvm " + dinfo['VM_name'] + " --nic2 bridged  --bridgeadapter1 " + dinfo['bridge'])
+ # VBoxManage modifyvm TestDebian --nic1 bridged --nictype1 82545EM
+# vboxmanage modifyvm TestDebian --nicpromisc1 allow-all
+    #system("vboxmanage modifyvm " + dinfo['VM_name'] + " --nic2 bridged  --bridgeadapter1 " + dinfo['bridge'])
