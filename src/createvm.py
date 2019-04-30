@@ -23,6 +23,7 @@ def configure_vm(dinfo):
             dinfo['disk_pathname'], dinfo['disk_file_format'], \
             dinfo['disk_type'])
     boot_order(dinfo['VM_name'])
+    set_network(dinfo)
 
 def create_disk(VM_name, disk_size, iso_path, disk_pathname, disk_file_format, \
         disk_type):
@@ -48,7 +49,8 @@ def boot_order(VM_name):
                 + " --boot" + str(boot_devices.index(device) + 1) \
                 + " " + device)
 
-#def set_network(dinfo):
- # VBoxManage modifyvm TestDebian --nic1 bridged --nictype1 82545EM
-# vboxmanage modifyvm TestDebian --nicpromisc1 allow-all
-    #system("vboxmanage modifyvm " + dinfo['VM_name'] + " --nic2 bridged  --bridgeadapter1 " + dinfo['bridge'])
+def set_network(dinfo):
+    system("VBoxManage modifyvm TestDebian --nic1 bridged --nictype1 82540EM")
+    system("VBoxManage modifyvm TestDebian --nicpromisc1 allow-all")
+    system("VBoxManage modifyvm TestDebian --cableconnected1 on")
+    system("VBoxManage modifyvm TestDebian --bridgeadapter1 en0")
