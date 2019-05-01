@@ -8,3 +8,4 @@ iso_path = ./iso/preseed-mini.iso
 disk_pathname = /tmp/rogerdebian
 disk_file_format = vdi
 disk_type = hdd
+ip_vm = 10.11.3.42

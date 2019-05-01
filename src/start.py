@@ -17,6 +17,11 @@ from os import system
 def start_vm(VM_name):
     system("vboxmanage startvm " + VM_name + " --type headless")
 
+def connect_ssh(VM_name, ip_vm, user_passwd)
+    system("ssh ") # change port 2222
+                    # block passwd connection
+                   # ssh public keys
+
 '''
 ## Unmount the iso from the VM
 def unmount_iso(VM_name):
