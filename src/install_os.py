@@ -25,7 +25,7 @@ def install_os(VM_name):
         print ("Could not start the VM " + VM_name)
         exit()
     else:
-        print ("Installing operating system on " + VM_name + ".")
+        print ("Installing operating system on " + VM_name + "...")
         while True:
             status = popen("vboxmanage showvminfo '" \
                     + VM_name + "' | grep -c running").read()
