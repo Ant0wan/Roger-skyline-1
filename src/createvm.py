@@ -50,7 +50,7 @@ def boot_order(VM_name):
                 + " " + device)
 
 def set_network(dinfo):
-    system("VBoxManage modifyvm TestDebian --nic1 bridged --nictype1 82540EM")
-    system("VBoxManage modifyvm TestDebian --nicpromisc1 allow-all")
-    system("VBoxManage modifyvm TestDebian --cableconnected1 on")
-    system("VBoxManage modifyvm TestDebian --bridgeadapter1 en0")
+    system("VBoxManage modifyvm " + VM_name + " --nic1 bridged --nictype1 82540EM")
+    system("VBoxManage modifyvm " + VM_name + " --nicpromisc1 allow-all")
+    system("VBoxManage modifyvm " + VM_name + " --cableconnected1 on")
+    system("VBoxManage modifyvm " + VM_name + " --bridgeadapter1 en0")
