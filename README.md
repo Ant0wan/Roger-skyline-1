@@ -16,7 +16,7 @@ _Script files description_
 
 ## Ports
 
-Port had been modified:
+Port were modified:
 
 | Port | Service |
 | --- | --- |
