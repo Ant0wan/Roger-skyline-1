@@ -1,11 +1,11 @@
-VM_name = ftDebian
+VM_name = MiniDebian
 OS_type = Debian_64
 cpu = 4
 ram = 1024
 disk_size = 8000
 bridge = en0
 iso_path = ./iso/preseed-mini.iso
-disk_pathname = /tmp/ftdebian
+disk_pathname = /tmp/minidebian
 disk_file_format = vdi
 disk_type = hdd
-ip_vm = 10.11.42.42
+ip_vm = 10.11.6.42
