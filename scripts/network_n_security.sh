@@ -11,5 +11,12 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Change ssh port
-sudo sed -n -i 'p;13a Port 2266'  /etc/ssh/sshd_config
+SUDO_PSSWD='root'
+
+## Change SSH ports
+#	Server
+	echo $SUDO_PSSWD | sudo -S sed -n -i 'p;13a Port 2266'  /etc/ssh/sshd_config >/dev/null
+#	Client
+	echo $SUDO_PSSWD | sudo -S sed -n -i 'p;41a Port 2266'  /etc/ssh/ssh_config >/dev/null
+
+
