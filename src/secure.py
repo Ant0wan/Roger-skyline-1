@@ -1,24 +1,26 @@
-#!/bin/sh
+#!/usr/bin/python3
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    network_n_security.sh                              :+:      :+:    :+:    #
+#    secure.py                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/05/02 14:07:35 by abarthel          #+#    #+#              #
-#    Updated: 2019/05/02 14:07:35 by abarthel         ###   ########.fr        #
+#    Created: 2019/02/25 18:26:40 by abarthel          #+#    #+#              #
+#    Updated: 2019/02/25 18:26:40 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Best practice is to set the password as ENV variable
-SUDO_PSSWD='root'
+from os import system
 
-## Change SSH ports
-# Server
-echo $SUDO_PSSWD | sudo -S sed -n -i 'p;13a Port 2266'  /etc/ssh/sshd_config >/dev/null
-# Client
-echo $SUDO_PSSWD | sudo -S sed -n -i 'p;41a Port 2266'  /etc/ssh/ssh_config >/dev/null
+## Start the VM
+def secure_vm(VM_name):
+    start_vm(VM_name)
 
-## Change netmask
-echo "root" | sudo -S sed -n -i 'p;14a \\tnetmask 255.255.255.252'  /etc/network/interfaces
+#def connect_ssh(VM_name, ip_vm, user_passwd)
+#    system("ssh ") # change port 2222
+                    # block passwd connection
+                   # ssh public keys
+
+#print ("https://www.oracle.com/technetwork/articles/servers-storage-admin/manage-vbox-cli-2264359.html")
+##print ("shasum < disk.vdi")

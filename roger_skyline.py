@@ -19,6 +19,7 @@ from src.shutdown import shutdown_vm
 from src.install_os import install_os
 from src.delete import delete_vm
 from src.start import start_vm
+from src.secure import secure_vm
 
 info = "info"
 path = getcwd()
@@ -34,6 +35,8 @@ def main(arg):
         delete_vm(dinfo['VM_name'])
     elif arg == 'config':
         configure_vm(dinfo)
+    elif arg == 'secure':
+        secure_vm(dinfo['VM_name'])
     else:
         configure_vm(dinfo)
         install_os(dinfo['VM_name'])

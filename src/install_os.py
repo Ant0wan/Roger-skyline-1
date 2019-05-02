@@ -34,3 +34,4 @@ def install_os(VM_name):
                 break
             else:
                 time.sleep(5)
+    system("VBoxManage storageattach " + VM_name + " --storagectl IDE --port 0 --device 0 --medium none")
