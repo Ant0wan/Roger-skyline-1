@@ -19,7 +19,7 @@ from src.start import start_vm
 def secure_vm(VM_name):
     start_vm(VM_name)
     sleep(15)
-    system("ssh -o "StrictHostKeyChecking no" -i ~/.ssh/id_rsa antoine@10.11.42.42 'sh -s' < config/config_ssh.sh")
+    system("ssh -o 'StrictHostKeyChecking no' -i ~/.ssh/id_rsa antoine@10.11.42.42 'sh -s' < config/config_ssh.sh")
     sleep(1)
     load_scripts()
 
