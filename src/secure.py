@@ -12,8 +12,7 @@
 # **************************************************************************** #
 
 from time import sleep
-from os import system, environ
-import shutil
+from os import system, rename, environ
 from src.start import start_vm
 
 ## Secure the VM
@@ -30,7 +29,7 @@ def secure_vm(VM_name):
 #https://kb.iu.edu/d/aews
 def rsa_gen():
     system("echo -e 'y\n' | ssh-keygen -t rsa -b 2048 -f /Users/abarthel/.ssh/id_rsa -N ''")
-    shutil.move("/Users/abarthel/.ssh/id_rsa.pub", "/Users/abarthel/Roger-skyline-1/config/authorized_keys")
+#    rename("/Users/abarthel/.ssh/id_rsa.pub", "/Users/abarthel/Roger-skyline-1/config/authorized_keys")
 #    system("git add config/authorized_keys && git commit -m 'upload ssh pub key' && git push")
 
 
