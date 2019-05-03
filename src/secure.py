@@ -18,9 +18,13 @@ from src.start import start_vm
 ## Secure the VM
 def secure_vm(VM_name):
     start_vm(VM_name)
-    sleep(10)
-#ssh -o "StrictHostKeyChecking no" -i ~/.ssh/id_rsa antoine@10.11.42.42
-    #system("ssh -o "StrictHostKeyChecking no" -i ~/.ssh/id_rsa antoine@10.11.42.42")
+    sleep(15)
+    system("ssh -o "StrictHostKeyChecking no" -i ~/.ssh/id_rsa antoine@10.11.42.42 'sh -s' < config/config_ssh.sh")
+    sleep(1)
+    load_scripts()
+
+def load_scripts():
+    system("ssh -p 2266 antoine@10.11.42.42 'sh -s' < config/config_network.sh")
 
 ## Generate RSA key and move it to appropriate repo for the preseed to wget it
 #https://kb.iu.edu/d/aews

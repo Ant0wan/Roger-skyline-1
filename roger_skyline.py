@@ -34,15 +34,13 @@ def main(arg):
     elif arg == 'delete':
         shutdown_vm(dinfo['VM_name'])
         delete_vm(dinfo['VM_name'])
-    elif arg == 'config':
-        configure_vm(dinfo)
     elif arg == 'secure':
         secure_vm(dinfo['VM_name'])
-    elif arg == 'rsa':
-        rsa_gen()
     else:
         configure_vm(dinfo)
+        rsa_gen()
         install_os(dinfo['VM_name'])
+        secure_vm(dinfo['VM_name'])
 
 if __name__ == '__main__':
     i = 0
