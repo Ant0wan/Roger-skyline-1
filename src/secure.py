@@ -19,8 +19,8 @@ from src.start import start_vm
 def secure_vm(VM_name):
     start_vm(VM_name)
     sleep(10)
-    #system("echo root | ssh antoine@10.11.6.42 -p 22")
-    #ssh-keygen -t rsa -b 2048 -f config/authorized_keys -N ""
+#ssh -o "StrictHostKeyChecking no" -i ~/.ssh/id_rsa antoine@10.11.42.42
+    #system("ssh -o "StrictHostKeyChecking no" -i ~/.ssh/id_rsa antoine@10.11.42.42")
 
 ## Generate RSA key and move it to appropriate repo for the preseed to wget it
 #https://kb.iu.edu/d/aews
