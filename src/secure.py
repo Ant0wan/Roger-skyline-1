@@ -21,13 +21,16 @@ def secure_vm(VM_name):
     start_vm(VM_name)
     sleep(60)
     system("ssh -o 'StrictHostKeyChecking no' -i ~/.ssh/id_rsa antoine@10.11.42.42 'sh -s' < config/config_ssh.sh")
-    sleep(1)
+    sleep(2)
+    print ("\nSSH has been configured.")
     load_scripts()
     shutdown_vm(VM_name)
-    print ("The VM has been secured.")
+    print ("\nThe VM has been secured and is now powered off.")
 
 def load_scripts():
     system("ssh -p 2266 antoine@10.11.42.42 'sh -s' < config/config_network.sh")
+    print ("\nNetwork has been configured.")
+    sleep(2)
 
 ## Generate RSA key and move it to appropriate repo for the preseed to wget it
 #https://kb.iu.edu/d/aews
