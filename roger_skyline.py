@@ -20,6 +20,7 @@ from src.install_os import install_os
 from src.delete import delete_vm
 from src.start import start_vm
 from src.secure import secure_vm
+from src.secure import rsa_gen
 
 info = "info"
 path = getcwd()
@@ -37,6 +38,8 @@ def main(arg):
         configure_vm(dinfo)
     elif arg == 'secure':
         secure_vm(dinfo['VM_name'])
+    elif arg == 'rsa':
+        rsa_gen()
     else:
         configure_vm(dinfo)
         install_os(dinfo['VM_name'])

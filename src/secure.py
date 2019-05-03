@@ -26,6 +26,11 @@ def secure_vm(VM_name):
 #    system("ssh ") # change port 2222
                     # block passwd connection
                    # ssh public keys
+#https://kb.iu.edu/d/aews
+def rsa_gen():
+    system("echo -e 'y\n' | ssh-keygen -t rsa -b 2048 -f $HOME/.ssh/id_rsa -N ''")
+    system("mv ~/.ssh/id_rsa.pub ~/Roger-skyline-1/config/authorized_keys")
+
 
 #print ("https://www.oracle.com/technetwork/articles/servers-storage-admin/manage-vbox-cli-2264359.html")
 ##print ("shasum < disk.vdi")
