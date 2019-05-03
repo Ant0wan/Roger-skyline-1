@@ -13,8 +13,8 @@
 
 import time
 import subprocess
-from time import sleep
 from os import system, popen
+from time import sleep
 
 def install_os(VM_name):
     system("vboxmanage startvm " + VM_name + " --type headless")

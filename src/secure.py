@@ -19,11 +19,12 @@ from src.shutdown import shutdown_vm
 ## Secure the VM
 def secure_vm(VM_name):
     start_vm(VM_name)
-    sleep(15)
+    sleep(60)
     system("ssh -o 'StrictHostKeyChecking no' -i ~/.ssh/id_rsa antoine@10.11.42.42 'sh -s' < config/config_ssh.sh")
     sleep(1)
     load_scripts()
     shutdown_vm(VM_name)
+    print ("The VM has been secured.")
 
 def load_scripts():
     system("ssh -p 2266 antoine@10.11.42.42 'sh -s' < config/config_network.sh")
