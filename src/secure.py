@@ -12,14 +12,14 @@
 # **************************************************************************** #
 
 from time import sleep
-from os import system
+from os import system, environ
 from src.start import start_vm
 
 ## Secure the VM
 def secure_vm(VM_name):
     start_vm(VM_name)
     sleep(10)
-    system("echo root | ssh -S antoine@10.11.6.42 -p 22")
+    #system("echo root | ssh antoine@10.11.6.42 -p 22")
 
 
 #def connect_ssh(VM_name, ip_vm, user_passwd)
