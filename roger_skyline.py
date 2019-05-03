@@ -34,9 +34,6 @@ def main(arg):
     elif arg == 'delete':
         shutdown_vm(dinfo['VM_name'])
         delete_vm(dinfo['VM_name'])
-    elif arg == 'vm':
-        configure_vm(dinfo)
-        install_os(dinfo['VM_name'])
     else:
         configure_vm(dinfo)
         rsa_gen()
@@ -52,7 +49,6 @@ if __name__ == '__main__':
                 + __name__ + \
                 ' [option]\nOptions:\n\tstart\tstarts the VM' + \
                 '\n\tstop\tpoweroff the VM' + \
-                '\n\tvm\tcreate small Debian VM' + \
                 '\n\tdelete\tstops and deletes the VM with its disk\n')
     elif i == 1:
         main("")
