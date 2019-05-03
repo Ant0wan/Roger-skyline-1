@@ -12,7 +12,7 @@
 # **************************************************************************** #
 
 from time import sleep
-from os import system, environ
+from os import system, environ, rename
 from src.start import start_vm
 
 ## Secure the VM
@@ -28,8 +28,9 @@ def secure_vm(VM_name):
                    # ssh public keys
 #https://kb.iu.edu/d/aews
 def rsa_gen():
-    system("echo -e 'y\n' | ssh-keygen -t rsa -b 2048 -f $HOME/.ssh/id_rsa -N ''")
-    system("mv ~/.ssh/id_rsa.pub ~/Roger-skyline-1/config/authorized_keys")
+    system("echo -e 'y\n' | ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa -N ''")
+    rename("~/.ssh/id_rsa.pub", "$~/Roger-skyline-1/config/authorized_keys")
+#    system("git add config/authorized_keys && git commit -m 'upload ssh pub key' && git push")
 
 
 #print ("https://www.oracle.com/technetwork/articles/servers-storage-admin/manage-vbox-cli-2264359.html")
