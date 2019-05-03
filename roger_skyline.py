@@ -13,14 +13,14 @@
 
 import sys
 from os import system, getcwd
-from src.parser import parser
-from src.createvm import configure_vm
-from src.shutdown import shutdown_vm
-from src.install_os import install_os
-from src.delete import delete_vm
 from src.start import start_vm
-from src.secure import secure_vm
+from src.parser import parser
 from src.secure import rsa_gen
+from src.delete import delete_vm
+from src.secure import secure_vm
+from src.shutdown import shutdown_vm
+from src.createvm import configure_vm
+from src.install_os import install_os
 
 info = "info"
 path = getcwd()
