@@ -40,7 +40,7 @@ def main(arg):
         configure_vm(dinfo)
         rsa_gen()
         install_os(dinfo['VM_name'])
-#        secure_vm(dinfo['VM_name'])
+        secure_vm(dinfo)
 
 if __name__ == '__main__':
     i = 0

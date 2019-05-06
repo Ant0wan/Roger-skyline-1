@@ -17,14 +17,14 @@ from src.start import start_vm
 from src.shutdown import shutdown_vm
 
 ## Secure the VM
-def secure_vm(VM_name):
-    start_vm(VM_name)
-    while system("ping -c 1 -t 1  10.11.42.42"):
+def secure_vm(dinfo):
+    start_vm(dinfo['VM_name'])
+    while system("ping -c 1 -t 1 " + dinfo['ip_vm']):
         sleep(1)
     system("ssh -o 'StrictHostKeyChecking no' -i ~/.ssh/id_rsa antoine@10.11.42.42 'sh -s' < config/config_ssh.sh")
     print ("\nSSH has been configured.")
     load_scripts()
-    shutdown_vm(VM_name)
+    shutdown_vm(dinfo['VM_name'])
     print ("\nThe VM has been secured and is now powered off.")
 
 def load_scripts():
