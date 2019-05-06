@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -7,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/25 18:26:40 by abarthel          #+#    #+#              #
-#    Updated: 2019/02/25 18:26:40 by abarthel         ###   ########.fr        #
+#    Updated: 2019/05/06 12:33:32 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +23,8 @@ def secure_vm(dinfo):
         sleep(1)
     load_scripts(dinfo)
     shutdown_vm(dinfo['VM_name'])
-    print ("\nThe VM has been successfully secured. The VM is now powered off.")
+    print ("\nThe VM has been successfully secured." \
+            "\nThe VM is now powered off.")
 
 def load_scripts(dinfo):
     system("ssh -o 'StrictHostKeyChecking no' -i ~/.ssh/id_rsa " + \
@@ -36,17 +36,9 @@ def load_scripts(dinfo):
             " 'sh -s' < config/config_network.sh")
     print ("\nNetwork has been configured.")
 
-## Generate RSA key and move it to appropriate repo for the preseed to wget it
-#https://kb.iu.edu/d/aews
 def rsa_gen():
     system("ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa -N ''")
     system("mv ~/.ssh/id_rsa.pub ~/Roger-skyline-1/config/authorized_keys")
-    system("git add config/authorized_keys && git commit -m 'upload ssh pub key' && git push")
-
-#def connect_ssh(VM_name, ip_vm, user_passwd)
-#    system("ssh ") # change port 2222
-                    # block passwd connection
-                   # ssh public keys
-
-#print ("https://www.oracle.com/technetwork/articles/servers-storage-admin/manage-vbox-cli-2264359.html")
-##print ("shasum < disk.vdi")
+    system("git add config/authorized_keys" \
+            "&& git commit -m 'upload ssh pub key'" \
+            " && git push")

@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -7,14 +6,14 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/25 18:26:40 by abarthel          #+#    #+#              #
-#    Updated: 2019/02/25 18:26:40 by abarthel         ###   ########.fr        #
+#    Updated: 2019/05/06 12:31:51 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 import time
 import subprocess
-from os import system, popen
 from time import sleep
+from os import system, popen
 
 def install_os(VM_name):
     system("vboxmanage startvm " + VM_name + " --type headless")
@@ -34,4 +33,5 @@ def install_os(VM_name):
                 break
             else:
                 time.sleep(5)
-    system("VBoxManage storageattach " + VM_name + " --storagectl IDE --port 0 --device 0 --medium none")
+    system("VBoxManage storageattach " + VM_name + \
+            " --storagectl IDE --port 0 --device 0 --medium none")
