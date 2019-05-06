@@ -18,7 +18,7 @@ from src.shutdown import shutdown_vm
 
 ## Secure the VM
 def secure_vm(dinfo):
-    start_vm(dinfo['VM_name'])
+    system("vboxmanage startvm " + dinfo['VM_name'] + " --type headless")
     while system("ping -c 1 -t 1 " + dinfo['ip_vm']):
         sleep(1)
     system("ssh -o 'StrictHostKeyChecking no' -i ~/.ssh/id_rsa antoine@10.11.42.42 'sh -s' < config/config_ssh.sh")
