@@ -38,9 +38,11 @@ def main(arg):
         secure_vm(dinfo)
     else:
         configure_vm(dinfo)
-        rsa_gen()
+        if (dinfo['secure']) == 'yes':
+            rsa_gen()
         install_os(dinfo['VM_name'])
-        secure_vm(dinfo)
+        if (dinfo['secure']) == 'yes':
+            secure_vm(dinfo)
 
 if __name__ == '__main__':
     i = 0

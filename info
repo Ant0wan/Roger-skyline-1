@@ -11,3 +11,4 @@ disk_type = hdd
 ip_vm = 10.11.42.42
 user = antoine
 ssh_port = 2266
+secure = yes
