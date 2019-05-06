@@ -19,9 +19,9 @@ from src.shutdown import shutdown_vm
 ## Secure the VM
 def secure_vm(VM_name):
     start_vm(VM_name)
-    sleep(60)
+    while system("ping -c 1 -t 1  10.11.42.42"):
+        sleep(1)
     system("ssh -o 'StrictHostKeyChecking no' -i ~/.ssh/id_rsa antoine@10.11.42.42 'sh -s' < config/config_ssh.sh")
-    sleep(2)
     print ("\nSSH has been configured.")
     load_scripts()
     shutdown_vm(VM_name)
