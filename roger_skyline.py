@@ -29,9 +29,9 @@ def helper():
     print(sys.argv[0] + ' does not take more than 2 arguments.\nUsage: ' \
             + sys.argv[0] + \
             ' [option]\nOptions:\n\tstart\tstarts the VM' + \
-            '\n\tstop\tpoweroff the VM' + \
-            '\n\tssh\tconnect to the VM using SSH' + \
-            '\n\tdelete\tstops and deletes the VM with its disk\n')
+            '\n\tstop\tpoweroffs the VM' + \
+            '\n\tssh\tconnects to the VM using SSH' + \
+            '\n\tdelete\tstops and deletes the VM with its disk')
 
 def main(arg):
     dinfo = parser(info)
