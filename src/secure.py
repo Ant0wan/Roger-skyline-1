@@ -22,14 +22,18 @@ def secure_vm(dinfo):
     system("vboxmanage startvm " + dinfo['VM_name'] + " --type headless")
     while system("ping -c 1 -t 1 " + dinfo['ip_vm'] + " >/dev/null"):
         sleep(1)
-    system("ssh -o 'StrictHostKeyChecking no' -i ~/.ssh/id_rsa antoine@10.11.42.42 'sh -s' < config/config_ssh.sh")
-    print ("\nSSH has been configured.")
-    load_scripts()
+    load_scripts(dinfo)
     shutdown_vm(dinfo['VM_name'])
-    print ("\nThe VM has been secured and is now powered off.")
+    print ("\nThe VM has been successfully secured. The VM is now powered off.")
 
-def load_scripts():
-    system("ssh -p 2266 antoine@10.11.42.42 'sh -s' < config/config_network.sh")
+def load_scripts(dinfo):
+    system("ssh -o 'StrictHostKeyChecking no' -i ~/.ssh/id_rsa " + \
+            dinfo['user'] + "@" + dinfo['ip_vm'] + \
+            " 'sh -s' < config/config_ssh.sh")
+    print ("\nSSH has been configured.")
+    system("ssh -p " + dinfo['ssh_port'] + " " + \
+            dinfo['user'] + "@" + dinfo['ip_vm'] + \
+            " 'sh -s' < config/config_network.sh")
     print ("\nNetwork has been configured.")
 
 ## Generate RSA key and move it to appropriate repo for the preseed to wget it
