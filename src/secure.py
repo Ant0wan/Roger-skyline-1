@@ -18,8 +18,9 @@ from src.shutdown import shutdown_vm
 
 ## Secure the VM
 def secure_vm(dinfo):
+    sleep(5)
     system("vboxmanage startvm " + dinfo['VM_name'] + " --type headless")
-    while system("ping -c 1 -t 1 " + dinfo['ip_vm']):
+    while system("ping -c 1 -t 1 " + dinfo['ip_vm'] + " >/dev/null"):
         sleep(1)
     system("ssh -o 'StrictHostKeyChecking no' -i ~/.ssh/id_rsa antoine@10.11.42.42 'sh -s' < config/config_ssh.sh")
     print ("\nSSH has been configured.")
@@ -30,7 +31,6 @@ def secure_vm(dinfo):
 def load_scripts():
     system("ssh -p 2266 antoine@10.11.42.42 'sh -s' < config/config_network.sh")
     print ("\nNetwork has been configured.")
-    sleep(2)
 
 ## Generate RSA key and move it to appropriate repo for the preseed to wget it
 #https://kb.iu.edu/d/aews

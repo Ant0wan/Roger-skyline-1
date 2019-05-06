@@ -35,7 +35,7 @@ def main(arg):
         shutdown_vm(dinfo['VM_name'])
         delete_vm(dinfo['VM_name'])
     elif arg == 'secure':
-        secure_vm(dinfo['VM_name'])
+        secure_vm(dinfo)
     else:
         configure_vm(dinfo)
         rsa_gen()
