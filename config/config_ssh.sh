@@ -6,3 +6,4 @@ echo $SUDO_PSSWD | sudo -S systemctl restart ssh
 
 # port 2222
 # block passwd connection
+# block root connection
