@@ -1,16 +1,15 @@
 #!/bin/sh
-SUDO_PSSWD='root'
-SSH_PORT='2266'
-DNS_PORT='53'
-echo $SUDO_PSSWD | sudo -S apt-get install -y ufw
-echo $SUDO_PSSWD | sudo -S ufw --force reset
-echo $SUDO_PSSWD | sudo -S default deny incoming
-echo $SUDO_PSSWD | sudo -S default deny outgoing
-echo $SUDO_PSSWD | sudo -S allow $SSH_PORT/tcp
-echo $SUDO_PSSWD | sudo -S ufw allow out http
-echo $SUDO_PSSWD | sudo -S ufw allow in http
-echo $SUDO_PSSWD | sudo -S ufw allow out https
-echo $SUDO_PSSWD | sudo -S ufw allow in https
-echo $SUDO_PSSWD | sudo -S ufw allow out $DNS_PORT
-echo $SUDO_PSSWD | sudo -S ufw logging on
-echo $SUDO_PSSWD | sudo -S ufw --force enable
+SSH_PORT=$2
+DNS_PORT=$3
+echo $1 | sudo -S apt-get install -y ufw
+echo $1 | sudo -S ufw --force reset
+echo $1 | sudo -S default deny incoming
+echo $1 | sudo -S default deny outgoing
+echo $1 | sudo -S allow $SSH_PORT/tcp
+echo $1 | sudo -S ufw allow out http
+echo $1 | sudo -S ufw allow in http
+echo $1 | sudo -S ufw allow out https
+echo $1 | sudo -S ufw allow in https
+echo $1 | sudo -S ufw allow out $DNS_PORT
+echo $1 | sudo -S ufw logging on
+echo $1 | sudo -S ufw --force enable

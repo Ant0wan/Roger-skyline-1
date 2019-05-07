@@ -13,4 +13,5 @@ netmask = 255.255.255.252
 user = antoine
 passwd = root
 ssh_port = 2266
+dns_port = 53
 secure = yes
