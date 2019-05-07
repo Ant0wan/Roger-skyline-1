@@ -13,5 +13,5 @@ echo $SUDO_PSSWD | sudo -S iptables -A OUTPUT -m state --state RELATED,ESTABLISH
 # Loopback
 echo $SUDO_PSSWD | sudo -S iptables -t filter -A INPUT -i lo -j ACCEPT
 echo $SUDO_PSSWD | sudo -S iptables -t filter -A OUTPUT -o lo -j ACCEPT
-
+# Load rules
 echo $SUDO_PSSWD | sudo -S iptables -F
