@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/25 18:26:40 by abarthel          #+#    #+#              #
-#    Updated: 2019/05/07 14:55:52 by abarthel         ###   ########.fr        #
+#    Updated: 2019/05/07 16:16:08 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,12 +30,14 @@ def load_scripts(dinfo):
     sleep(1)
     system("ssh -o 'StrictHostKeyChecking no' -i ~/.ssh/id_rsa " + \
             dinfo['user'] + "@" + dinfo['ip_vm'] + \
-            " 'sh -s' < config/config_ssh.sh")
+            " 'sh -s' < config/config_ssh.sh " + dinfo['passwd'] + \
+            " " + dinfo['ssh_port'])
     print ("\nSSH has been configured.")
     sleep(1)
     system("ssh -p " + dinfo['ssh_port'] + " " + \
             dinfo['user'] + "@" + dinfo['ip_vm'] + \
-            " 'sh -s' < config/config_network.sh")
+            " 'sh -s' < config/config_network.sh " + dinfo['passwd'] + \
+            " " + dinfo['ip_vm'] + " " + dinfo['netmask'])
     print ("\nNetwork has been configured.")
     sleep(1)
 
