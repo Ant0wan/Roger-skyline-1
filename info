@@ -1,11 +1,11 @@
-VM_name = ShDebian
+VM_name = PortsDebian
 OS_type = Debian_64
 cpu = 4
 ram = 1024
 disk_size = 8000
 bridge = en0
 iso_path = ./iso/preseed-mini.iso
-disk_pathname = /tmp/shdebian
+disk_pathname = /tmp/portsdebian
 disk_file_format = vdi
 disk_type = hdd
 ip_vm = 10.11.21.42

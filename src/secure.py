@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/25 18:26:40 by abarthel          #+#    #+#              #
-#    Updated: 2019/05/07 16:57:51 by abarthel         ###   ########.fr        #
+#    Updated: 2019/05/07 18:17:09 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ def load_scripts(dinfo):
     sleep(1)
     system("ssh -p " + dinfo['ssh_port'] + " " + \
             dinfo['user'] + "@" + dinfo['ip_vm'] + \
-            " 'sh -s' < config/config_firewall.sh " + dinfo['passwd'])
+            " 'sh -s' < config/config_ports.sh " + dinfo['passwd'])
     print ("\nPorts have been configured.")
     sleep(1)
 
