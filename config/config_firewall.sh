@@ -1,10 +1,17 @@
 #!/bin/sh
-# 1 - https://www.digitalocean.com/community/tutorials/how-the-iptables-firewall-works
-# 2 - https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-iptables-on-ubuntu-14-04
-# 3 - https://www.digitalocean.com/community/tutorials/iptables-essentials-common-firewall-rules-and-commands 
 SUDO_PSSWD='root'
+# Close all pipes
 echo $SUDO_PSSWD | sudo -S iptables -P FORWARD DROP
+echo $SUDO_PSSWD | sudo -S iptables -P INPUT DROP
+echo $SUDO_PSSWD | sudo -S iptables -P OUTPUT DROP
+# Open ports
 echo $SUDO_PSSWD | sudo -S iptables -A INPUT -p tcp --dport 2266 -j ACCEPT
-echo $SUDO_PSSWD | sudo -S iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-echo $SUDO_PSSWD | sudo -S iptables -I INPUT 1 -i lo -j ACCEPT
+#echo $SUDO_PSSWD | sudo -S iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+# Keep previous connections
+echo $SUDO_PSSWD | sudo -S iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+echo $SUDO_PSSWD | sudo -S iptables -A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+# Loopback
+echo $SUDO_PSSWD | sudo -S iptables -t filter -A INPUT -i lo -j ACCEPT
+echo $SUDO_PSSWD | sudo -S iptables -t filter -A OUTPUT -o lo -j ACCEPT
+
 echo $SUDO_PSSWD | sudo -S iptables -F
