@@ -1,14 +1,17 @@
 #!/bin/sh
 SUDO_PSSWD='root'
 SSH_PORT='2266'
-echo $SUDO_PSSWD | sudo -S iptables -P FORWARD DROP
-echo $SUDO_PSSWD | sudo -S iptables -P INPUT DROP
-echo $SUDO_PSSWD | sudo -S iptables -P OUTPUT DROP
-echo $SUDO_PSSWD | sudo -S iptables -t filter -A INPUT -p tcp --dport $SSH_PORT -j ACCEPT
-echo $SUDO_PSSWD | sudo -S iptables -t filter -A OUTPUT -p tcp --dport $SSH_PORT -j ACCEPT
-#echo $SUDO_PSSWD | sudo -S iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-echo $SUDO_PSSWD | sudo -S iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
-echo $SUDO_PSSWD | sudo -S iptables -A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
-echo $SUDO_PSSWD | sudo -S iptables -t filter -A INPUT -i lo -j ACCEPT
-echo $SUDO_PSSWD | sudo -S iptables -t filter -A OUTPUT -o lo -j ACCEPT
-echo $SUDO_PSSWD | sudo -S iptables -F
+echo $SUDO_PSSWD | sudo -S apt-get install -y ufw
+echo $SUDO_PSSWD | sudo -S ufw --force reset
+echo $SUDO_PSSWD | sudo -S default deny incoming
+echo $SUDO_PSSWD | sudo -S default deny outgoing
+echo $SUDO_PSSWD | sudo -S allow $SSH_PORT/tcp
+echo $SUDO_PSSWD | sudo -S ufw allow out http
+echo $SUDO_PSSWD | sudo -S ufw allow in http
+echo $SUDO_PSSWD | sudo -S ufw allow out https
+echo $SUDO_PSSWD | sudo -S ufw allow in https
+echo $SUDO_PSSWD | sudo -S ufw allow out 53 
+#/var/log/ufw.log
+echo $SUDO_PSSWD | sudo -S ufw logging on
+echo $SUDO_PSSWD | sudo -S ufw --force enable
+#echo $SUDO_PSSWD | sudo -S 
