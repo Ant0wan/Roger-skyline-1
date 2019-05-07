@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/25 18:26:40 by abarthel          #+#    #+#              #
-#    Updated: 2019/05/07 14:45:42 by abarthel         ###   ########.fr        #
+#    Updated: 2019/05/07 14:55:01 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,6 @@ def load_scripts(dinfo):
             dinfo['user'] + "@" + dinfo['ip_vm'] + \
             " 'sh -s' < config/config_ssh.sh")
     print ("\nSSH has been configured.")
-    sleep(1)
     system("ssh -p " + dinfo['ssh_port'] + " " + \
             dinfo['user'] + "@" + dinfo['ip_vm'] + \
             " 'sh -s' < config/config_network.sh")
