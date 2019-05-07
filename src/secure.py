@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/25 18:26:40 by abarthel          #+#    #+#              #
-#    Updated: 2019/05/06 12:33:32 by abarthel         ###   ########.fr        #
+#    Updated: 2019/05/07 14:45:42 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,9 @@ def secure_vm(dinfo):
     system("vboxmanage startvm " + dinfo['VM_name'] + " --type headless")
     while system("ping -c 1 -t 1 " + dinfo['ip_vm'] + " >/dev/null"):
         sleep(1)
+    sleep(1)
     load_scripts(dinfo)
+    sleep(1)
     shutdown_vm(dinfo['VM_name'])
     print ("\nThe VM has been successfully secured." \
             "\nThe VM is now powered off.")
@@ -31,6 +33,7 @@ def load_scripts(dinfo):
             dinfo['user'] + "@" + dinfo['ip_vm'] + \
             " 'sh -s' < config/config_ssh.sh")
     print ("\nSSH has been configured.")
+    sleep(1)
     system("ssh -p " + dinfo['ssh_port'] + " " + \
             dinfo['user'] + "@" + dinfo['ip_vm'] + \
             " 'sh -s' < config/config_network.sh")
