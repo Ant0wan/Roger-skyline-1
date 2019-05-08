@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/25 18:26:40 by abarthel          #+#    #+#              #
-#    Updated: 2019/05/07 15:41:47 by abarthel         ###   ########.fr        #
+#    Updated: 2019/05/07 18:25:52 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,5 +23,6 @@ def ssh_vm(dinfo):
     start_vm(dinfo['VM_name'])
     while system("ping -c 1 -t 1 " + dinfo['ip_vm'] + " >/dev/null"):
         sleep(1)
+    sleep(1)
     system("ssh -p " + dinfo['ssh_port'] + " " + \
             dinfo['user'] + "@" + dinfo['ip_vm'])
