@@ -9,5 +9,6 @@ echo $1 | sudo -S ufw allow in http
 echo $1 | sudo -S ufw allow out https
 echo $1 | sudo -S ufw allow in https
 echo $1 | sudo -S ufw allow out $3
+# Open ports for portsentry
 echo $1 | sudo -S ufw logging on
 echo $1 | sudo -S ufw --force enable
