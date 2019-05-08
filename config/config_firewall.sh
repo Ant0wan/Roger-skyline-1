@@ -12,7 +12,7 @@ echo $1 | sudo -S ufw allow in https
 echo $1 | sudo -S ufw allow out $3
 for i in $TCP_PORTS
 do
-	echo $1 | sudo -S ufw allow $i
+	echo $1 | sudo -S ufw allow in $i
 done
 echo $1 | sudo -S ufw logging on
 echo $1 | sudo -S ufw --force enable
