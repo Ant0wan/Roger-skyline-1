@@ -1,7 +1,6 @@
 #!/bin/sh
 echo $1 | sudo -S apt-get install -y portsentry
-##host $(hostname) | grep -o -e "[0-9]*[.][0-9]*[.][0-9]*[.][0-9]" IP of your host(dump) here 10.11.6.5
-echo $1 | sudo -S sed -n -i 'p;10a 10.11.6.5' /etc/portsentry/portsentry.ignore
+echo $1 | sudo -S sed -n -i 'p;10a '$2 /etc/portsentry/portsentry.ignore
 echo $1 | sudo -S sed -i 's/TCP_MODE="tcp"/TCP_MODE="atcp"/g' /etc/default/portsentry
 echo $1 | sudo -S sed -i 's/UDP_MODE="udp"/UDP_MODE="audp"/g' /etc/default/portsentry
 echo $1 | sudo -S sed -i 's/BLOCK_UDP="0"/BLOCK_UDP="1"/g' /etc/portsentry/portsentry.conf

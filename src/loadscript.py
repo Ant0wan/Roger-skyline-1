@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/25 18:26:40 by abarthel          #+#    #+#              #
-#    Updated: 2019/05/08 16:07:45 by abarthel         ###   ########.fr        #
+#    Updated: 2019/05/08 16:10:46 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,5 +41,7 @@ def set_ports(dinfo):
     sleep(1)
     system("ssh -p " + dinfo['ssh_port'] + " " + \
             dinfo['user'] + "@" + dinfo['ip_vm'] + \
-            " 'sh -s' < config/config_ports.sh " + dinfo['passwd'])
+            " 'sh -s' < config/config_ports.sh " + dinfo['passwd'] + \
+            " $(host $(hostname) " + \
+            "| grep -o -e '[0-9]*[.][0-9]*[.][0-9]*[.][0-9]')")
     print ("\nPorts have been configured.")
