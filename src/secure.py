@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/25 18:26:40 by abarthel          #+#    #+#              #
-#    Updated: 2019/05/07 18:17:09 by abarthel         ###   ########.fr        #
+#    Updated: 2019/05/08 16:07:22 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ from os import system
 from time import sleep
 from src.start import start_vm
 from src.shutdown import shutdown_vm
+from src.loadscript import set_ssh, set_netwwork, set_firewall, set_ports
 
 def secure_vm(dinfo):
     sleep(5)
@@ -26,29 +27,10 @@ def secure_vm(dinfo):
             "\nThe VM is now powered off.")
 
 def load_scripts(dinfo):
-    sleep(1)
-    system("ssh -o 'StrictHostKeyChecking no' -i ~/.ssh/id_rsa " + \
-            dinfo['user'] + "@" + dinfo['ip_vm'] + \
-            " 'sh -s' < config/config_ssh.sh " + dinfo['passwd'] + \
-            " " + dinfo['ssh_port'])
-    print ("\nSSH has been configured.")
-    sleep(1)
-    system("ssh -p " + dinfo['ssh_port'] + " " + \
-            dinfo['user'] + "@" + dinfo['ip_vm'] + \
-            " 'sh -s' < config/config_network.sh " + dinfo['passwd'] + \
-            " " + dinfo['ip_vm'] + " " + dinfo['netmask'])
-    print ("\nNetwork has been configured.")
-    sleep(1)
-    system("ssh -p " + dinfo['ssh_port'] + " " + \
-            dinfo['user'] + "@" + dinfo['ip_vm'] + \
-            " 'sh -s' < config/config_firewall.sh " + dinfo['passwd'] + \
-            " " + dinfo['ssh_port'] + " " + dinfo['dns_port'])
-    print ("\nFirewall has been configured.")
-    sleep(1)
-    system("ssh -p " + dinfo['ssh_port'] + " " + \
-            dinfo['user'] + "@" + dinfo['ip_vm'] + \
-            " 'sh -s' < config/config_ports.sh " + dinfo['passwd'])
-    print ("\nPorts have been configured.")
+    set_ssh(dinfo)
+    set_network(dinfo)
+    set_firewall(dinfo)
+    set_ports(dinfo)
     sleep(1)
 
 def rsa_gen():
