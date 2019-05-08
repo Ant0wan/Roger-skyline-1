@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/25 18:26:40 by abarthel          #+#    #+#              #
-#    Updated: 2019/05/08 16:07:22 by abarthel         ###   ########.fr        #
+#    Updated: 2019/05/08 16:14:34 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ from os import system
 from time import sleep
 from src.start import start_vm
 from src.shutdown import shutdown_vm
-from src.loadscript import set_ssh, set_netwwork, set_firewall, set_ports
+from src.loadscript import set_ssh, set_network, set_firewall, set_ports
 
 def secure_vm(dinfo):
     sleep(5)
