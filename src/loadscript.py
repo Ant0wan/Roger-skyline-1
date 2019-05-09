@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/25 18:26:40 by abarthel          #+#    #+#              #
-#    Updated: 2019/05/09 10:20:10 by abarthel         ###   ########.fr        #
+#    Updated: 2019/05/09 10:27:28 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ def set_ports(dinfo):
     system("ssh -p " + dinfo['ssh_port'] + " " + \
             dinfo['user'] + "@" + dinfo['ip_vm'] + \
             " 'sh -s' < config/config_ports.sh " + dinfo['passwd'] + \
-            " " + str(ip_host))
+            " " + "10.11.6.7")
     print ("\nPorts have been configured.")
 
 def set_grub(dinfo):

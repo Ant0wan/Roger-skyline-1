@@ -1,6 +1,6 @@
 #!/bin/sh
 echo $1 | sudo -S apt-get install -y portsentry
-echo $1 | sudo -S sed -n -i 'p;10a '$2 /etc/portsentry/portsentry.ignore
+echo $1 | sudo -S echo $2 >> /etc/portsentry/portsentry.ignore.static
 echo $1 | sudo -S sed -i 's/TCP_MODE="tcp"/TCP_MODE="atcp"/g' /etc/default/portsentry
 echo $1 | sudo -S sed -i 's/UDP_MODE="udp"/UDP_MODE="audp"/g' /etc/default/portsentry
 echo $1 | sudo -S sed -i 's/BLOCK_UDP="0"/BLOCK_UDP="1"/g' /etc/portsentry/portsentry.conf
