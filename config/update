@@ -1,0 +1,7 @@
+#!/bin/sh
+
+##  DESCRIPTION
+##  This script will perform and update of the system using apt-get.
+
+apt-get update
+apt-get upgrade
