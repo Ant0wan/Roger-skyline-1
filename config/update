@@ -3,5 +3,5 @@
 ##  DESCRIPTION
 ##  This script will perform and update of the system using apt-get.
 
-apt-get update
-apt-get upgrade
+apt-get update >> /var/log/update_script.log
+apt-get upgrade >> /var/log/update_script.log
