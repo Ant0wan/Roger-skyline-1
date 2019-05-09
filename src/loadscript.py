@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/25 18:26:40 by abarthel          #+#    #+#              #
-#    Updated: 2019/05/09 09:54:44 by abarthel         ###   ########.fr        #
+#    Updated: 2019/05/09 10:15:03 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,3 +45,10 @@ def set_ports(dinfo):
             " 'sh -s' < config/config_ports.sh " + dinfo['passwd'] + \
             " " + ip_host)
     print ("\nPorts have been configured.")
+
+def set_grub(dinfo):
+    sleep(1)
+    system("ssh -p " + dinfo['ssh_port'] + " " + \
+            dinfo['user'] + "@" + dinfo['ip_vm'] + \
+            " 'sh -s' < config/config_grub.sh " + dinfo['passwd'])
+    print ("\nGRUB menu has been disabled.")
