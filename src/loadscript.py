@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/25 18:26:40 by abarthel          #+#    #+#              #
-#    Updated: 2019/05/09 11:09:43 by abarthel         ###   ########.fr        #
+#    Updated: 2019/05/09 15:36:11 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,5 +57,13 @@ def set_denialofservices(dinfo):
     sleep(1)
     system("ssh -p " + dinfo['ssh_port'] + " " + \
             dinfo['user'] + "@" + dinfo['ip_vm'] + \
-            " 'sh -s' < config/config_denialofservices.sh " + dinfo['passwd'])
+            " 'sh -s' < config/config_denialofservices.sh " + dinfo['passwd'] + \
+            " " + dinfo['ssh_port'])
     print ("\nFail2ban has been configured.")
+
+def set_cron(dinfo):
+    sleep(1)
+    system("ssh -p " + dinfo['ssh_port'] + " " + \
+            dinfo['user'] + "@" + dinfo['ip_vm'] + \
+            " 'sh -s' < config/config_cron.sh " + dinfo['passwd'])
+    print ("\nDeamons have been scheduled.")
