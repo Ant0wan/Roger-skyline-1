@@ -13,3 +13,8 @@ echo $(md5sum /etc/crontab) | { cat -; } | sudo -S tee -a /var/log/watch_crontab
 echo $1 | sudo -S sed -n -i 'p;14a @reboot		root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.update )' /etc/crontab
 echo $1 | sudo -S sed -n -i 'p;14a 00 4	* * 1	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.update )' /etc/crontab
 echo $1 | sudo -S sed -n -i 'p;14a 00 0	* * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.watch )' /etc/crontab
+echo $1 | sudo -S apt-get install exim4
+echo "root: root" | { cat -; } | sudo -S tee -a /etc/aliases
+echo "user1: debian@local.net" | { cat -; } | sudo -S tee -a /etc/aliases
+echo "root: debian@local.net" | { cat -; } | sudo -S tee -a /etc/email-addresses
+echo "user1: debian@local.net" | { cat -; } | sudo -S tee -a /etc/email-addresses
