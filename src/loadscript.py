@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/25 18:26:40 by abarthel          #+#    #+#              #
-#    Updated: 2019/05/08 17:44:31 by abarthel         ###   ########.fr        #
+#    Updated: 2019/05/09 09:54:44 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,7 @@ def set_firewall(dinfo):
 
 def set_ports(dinfo):
     sleep(1)
-    ip_host = str(popen('host $(hostname) ' + \
-            '| grep -o -e "[0-9]*[.][0-9]*[.][0-9]*[.][0-9]"').read())
+    ip_host = str(popen('host $(hostname) | grep -o -e "[0-9]*[.][0-9]*[.][0-9]*[.][0-9]"').read().strip("\n"))
     system("ssh -p " + dinfo['ssh_port'] + " " + \
             dinfo['user'] + "@" + dinfo['ip_vm'] + \
             " 'sh -s' < config/config_ports.sh " + dinfo['passwd'] + \
