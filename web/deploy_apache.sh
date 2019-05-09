@@ -15,5 +15,6 @@ echo $1 | sudo -S openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /e
 echo $1 | sudo -S sed -ie "s/ssl\/certs\/ssl-cert-snakeoil.pem/apache2\/ssl\/apache.crt/g" /etc/apache2/sites-available/default-ssl.conf
 echo $1 | sudo -S sed -ie "s/ssl\/private\/ssl-cert-snakeoil.key/apache2\/ssl\/apache.key/g" /etc/apache2/sites-available/default-ssl.conf
 echo $1 | sudo -S cat /etc/apache2/sites-available/default-ssl.conf | { cat -; } | sudo -S tee -a /etc/apache2/sites-available/000-default.conf
+echo $1 | sudo -S sed -n -i "p;21a \	Redirect permanent / https://"$2 /etc/apache2/sites-availa    ble/000-default.conf
 echo $1 | sudo -S service apache2 reload
 echo $1 | sudo -S systemctl restart apache2

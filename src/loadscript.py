@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/25 18:26:40 by abarthel          #+#    #+#              #
-#    Updated: 2019/05/09 15:36:11 by abarthel         ###   ########.fr        #
+#    Updated: 2019/05/09 18:42:01 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,3 +67,11 @@ def set_cron(dinfo):
             dinfo['user'] + "@" + dinfo['ip_vm'] + \
             " 'sh -s' < config/config_cron.sh " + dinfo['passwd'])
     print ("\nDeamons have been scheduled.")
+
+def set_web(dinfo):
+    sleep(1)
+    system("ssh -p " + dinfo['ssh_port'] + " " + \
+            dinfo['user'] + "@" + dinfo['ip_vm'] + \
+            " 'sh -s' < web/deploy_apache.sh " + dinfo['passwd'] + \
+            " " + dinfo['ip_vm'])
+    print ("\nApache and website have been deployed.")
