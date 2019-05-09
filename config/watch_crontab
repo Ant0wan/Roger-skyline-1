@@ -3,7 +3,7 @@
 ##  DESCRIPTION
 ##  This script check if crontab has been modified and send an email to root.
 
-md5sum /etc/crontab > ~/.safekey.txt;
+md5sum /var/log/ > ~/.safekey.txt;
 echo 'FILETOCHECK=/etc/crontab
 FILECHECK=~/.safekey.txt
 if [ "$(md5sum -c $FILECHECK | cut -f2)" != "OK" ]
