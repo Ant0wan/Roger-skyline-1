@@ -1,0 +1,16 @@
+#!/bin/sh
+
+##  DESCRIPTION
+##  This script check if crontab has been modified and send an email to root.
+
+md5sum /etc/crontab > ~/.safekey.txt;
+echo 'FILETOCHECK=/etc/crontab
+FILECHECK=~/.safekey.txt
+if [ "$(md5sum -c $FILECHECK | cut -f2)" != "OK" ]
+then
+	echo "/etc/crontab was changed !" | mail -s "FILE HAS CHANGED !" root
+	md5sum $FILETOCHECK > $FILECHECK
+fi' > ~/.checkscript.sh \
+	&& chown root:root ~/.checkscript.sh \
+	&& chmod 100 ~/.checkscript.sh \
+	&& (crontab -l 2>/dev/null; echo "0 0 * * * sh ~/.checkscript.sh") | crontab -%
