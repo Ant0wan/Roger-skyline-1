@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/25 18:26:40 by abarthel          #+#    #+#              #
-#    Updated: 2019/05/09 10:26:08 by abarthel         ###   ########.fr        #
+#    Updated: 2019/05/09 11:10:04 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ from time import sleep
 from src.start import start_vm
 from src.shutdown import shutdown_vm
 from src.loadscript import set_ssh, set_network, set_firewall, set_ports, \
-        set_grub
+        set_grub, set_denialofservices
 
 def secure_vm(dinfo):
     sleep(5)
@@ -33,6 +33,7 @@ def load_scripts(dinfo):
     set_firewall(dinfo)
     set_ports(dinfo)
     set_grub(dinfo)
+    set_denialofservices(dinfo)
     sleep(1)
 
 def rsa_gen():

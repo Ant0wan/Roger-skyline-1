@@ -6,7 +6,7 @@
 #    By: abarthel <abarthel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/25 18:26:40 by abarthel          #+#    #+#              #
-#    Updated: 2019/05/09 10:46:24 by abarthel         ###   ########.fr        #
+#    Updated: 2019/05/09 11:09:43 by abarthel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,3 +52,10 @@ def set_grub(dinfo):
             dinfo['user'] + "@" + dinfo['ip_vm'] + \
             " 'sh -s' < config/config_grub.sh " + dinfo['passwd'])
     print ("\nGRUB menu has been disabled.")
+
+def set_denialofservices(dinfo):
+    sleep(1)
+    system("ssh -p " + dinfo['ssh_port'] + " " + \
+            dinfo['user'] + "@" + dinfo['ip_vm'] + \
+            " 'sh -s' < config/config_denialofservices.sh " + dinfo['passwd'])
+    print ("\nFail2ban has been configured.")
