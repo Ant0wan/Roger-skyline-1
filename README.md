@@ -126,7 +126,7 @@ secure = yes ( a 'no' will disable the web server deployment and all Roger-skyli
 - Copy of the repository:
 
 ```shell=
-git clone https://github.com/Ant0wan/Roger-skyline-1.git && cd Roger-skyline-1.git
+git clone https://github.com/Ant0wan/Roger-skyline-1.git && cd Roger-skyline-1
 ```
 
 - Modify the `info` file with your appropriate setting.
