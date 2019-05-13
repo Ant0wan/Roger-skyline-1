@@ -6,6 +6,22 @@ Virtual machine and web server deployment automation [a 42 project].
 
 ## Description
 
+Roger-skyline.py is a script that performs a virtual machine deployment using Virtual Box.
+
+This little software can execute multiple tasks such as starting, connecting ssh, powering off, configuring or deleting the virtual machine which elements have been configured in `info` file.
+
+Roger_skyline.py may take a unique argument:
+
+```
+./roger_skyline.py does not take more than 1 argument.
+Usage: ./roger_skyline.py [option]
+Options:
+	start	starts the VM
+	stop	poweroffs the VM
+	ssh	connects to the VM using SSH
+	delete	stops and deletes the VM with its disk
+```
+
 - Directory contents:
 
 ```
@@ -32,13 +48,26 @@ index.html
 ---
 
 
-## Script
+## Files description
 
-_Script files description_
+- Script files
 
 | [name].py | Description |
 | --- | --- |
 | **start.py** | Runs the vm once installed with the os.|
+| **start.py** | Runs the vm once installed with the os.|
+
+- Script files `./src/` + ./roger_skyline.py`
+
+| [name].py | Description |
+| --- | --- |
+| **roger_skyline.py** | Main script. Can take argument for mgt.|
+| **createvm.py** | Configure the vm .|
+| **install_os.py** | Runs the vm once installed with the os.|
+| **loadscript.py** | Runs the vm once installed with the os.|
+| **parser.py** | Runs the vm once installed with the os.|
+| **secure.py** | Runs the vm once installed with the os.|
+| **shutdown.py** | Runs the vm once installed with the os.|
 | **start.py** | Runs the vm once installed with the os.|
 
 ---

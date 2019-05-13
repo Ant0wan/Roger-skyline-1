@@ -26,7 +26,7 @@ from src.install_os import install_os
 info = "info"
 
 def helper():
-    print(sys.argv[0] + ' does not take more than 2 arguments.\nUsage: ' \
+    print(sys.argv[0] + ' does not take more than 1 argument.\nUsage: ' \
             + sys.argv[0] + \
             ' [option]\nOptions:\n\tstart\tstarts the VM' + \
             '\n\tstop\tpoweroffs the VM' + \
