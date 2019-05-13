@@ -56,6 +56,28 @@ index.html
 | --- | --- |
 | **info** | Text file parsed when executing roger_skyline.py. It contains all configuration settings.|
 
+- Info file entries that can be modified
+
+```
+VM_name = RogerSkylineDebian
+OS_type = Debian_64
+cpu = 4
+ram = 1024
+disk_size = 8000
+bridge = en0
+iso_path = ./iso/preseed-mini.iso
+disk_pathname = /tmp/rogerskylinedebian
+disk_file_format = vdi
+disk_type = hdd
+ip_vm = 10.11.21.42
+netmask = 255.255.255.252
+user = antoine (modify preseeding if changed)
+passwd = root (modifiy preseeding if changed)
+ssh_port = 2266
+dns_port = 53
+secure = yes ( a 'no' will disable the web server deployment and all Roger-skyline-1 parts)
+```
+
 - Script files `./src/` + ./roger_skyline.py`
 
 | [name].py | Description |
@@ -64,8 +86,8 @@ index.html
 | **createvm.py** | Configure the vm using info file.|
 | **install_os.py** | Subscript for OS installation.|
 | **loadscript.py** | Inject Roger-skyline-1 configuration files into the vm.|
-| **parser.py** | Runs the vm once installed with the os.|
-| **secure.py** | Runs the vm once installed with the os.|
+| **parser.py** | Parse info file and create the dinfo dictionnary.|
+| **secure.py** | Main script for deploying Roger-skyline-1 scripts including web server.|
 | **shutdown.py** | Runs the vm once installed with the os.|
 | **start.py** | Runs the vm once installed with the os.|
 
