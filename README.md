@@ -50,24 +50,30 @@ index.html
 
 ## Files description
 
-- Script files
+- Info file
 
-| [name].py | Description |
+| [name] | Description |
 | --- | --- |
-| **start.py** | Runs the vm once installed with the os.|
-| **start.py** | Runs the vm once installed with the os.|
+| **info** | Text file parsed when executing roger_skyline.py. It contains all configuration settings.|
 
 - Script files `./src/` + ./roger_skyline.py`
 
 | [name].py | Description |
 | --- | --- |
 | **roger_skyline.py** | Main script. Can take argument for mgt.|
-| **createvm.py** | Configure the vm .|
-| **install_os.py** | Runs the vm once installed with the os.|
-| **loadscript.py** | Runs the vm once installed with the os.|
+| **createvm.py** | Configure the vm using info file.|
+| **install_os.py** | Subscript for OS installation.|
+| **loadscript.py** | Inject Roger-skyline-1 configuration files into the vm.|
 | **parser.py** | Runs the vm once installed with the os.|
 | **secure.py** | Runs the vm once installed with the os.|
 | **shutdown.py** | Runs the vm once installed with the os.|
+| **start.py** | Runs the vm once installed with the os.|
+
+- Roger-skyline-1 configuration files
+
+| [name].sh | Description |
+| --- | --- |
+| **start.py** | Runs the vm once installed with the os.|
 | **start.py** | Runs the vm once installed with the os.|
 
 ---
