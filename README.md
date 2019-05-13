@@ -88,8 +88,8 @@ secure = yes ( a 'no' will disable the web server deployment and all Roger-skyli
 | **loadscript.py** | Inject Roger-skyline-1 configuration files into the vm.|
 | **parser.py** | Parse info file and create the dinfo dictionnary.|
 | **secure.py** | Main script for deploying Roger-skyline-1 scripts including web server.|
-| **shutdown.py** | Runs the vm once installed with the os.|
-| **start.py** | Runs the vm once installed with the os.|
+| **shutdown.py** | Shutdown the vm.|
+| **start.py** | Run the vm or start a SSH session.|
 
 - Roger-skyline-1 configuration files
 
