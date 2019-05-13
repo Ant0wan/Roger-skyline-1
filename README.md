@@ -96,18 +96,18 @@ secure = yes ( a 'no' will disable the web server deployment and all Roger-skyli
 | [name].sh | Description |
 | --- | --- |
 | **config_cron.sh** | Inject scheduled tasks to crontab that update all source packages and feed a /var/log/update_script.log.|
-| **config_denialofservices.sh** | Protect open ports and set traps for scans and denial of services attacks.|
+| **config_denialofservices.sh** | Protect open ports and set traps for port scans.|
 | **config_firewall.sh** | Set rules of the firewall.|
 | **config_grub.sh** | Disable grub at boot time.|
 | **config_network.sh** | Set network settings. (modify preseeding if changed)|
-| **config_ports.sh** | Runs the vm once installed with the os.|
-| **config_ssh.sh** | Runs the vm once installed with the os.|
+| **config_ports.sh** | Protect from denial of services attacks.|
+| **config_ssh.sh** | Set private key and change ssh port.|
 
 ---
 
 ## Ports
 
-Port were modified:
+Port that was modified:
 
 | Port | Service |
 | --- | --- |
