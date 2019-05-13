@@ -95,8 +95,13 @@ secure = yes ( a 'no' will disable the web server deployment and all Roger-skyli
 
 | [name].sh | Description |
 | --- | --- |
-| **start.py** | Runs the vm once installed with the os.|
-| **start.py** | Runs the vm once installed with the os.|
+| **config_cron.sh** | Runs the vm once installed with the os.|
+| **config_denialofservices.sh** | Runs the vm once installed with the os.|
+| **config_firewall.sh** | Runs the vm once installed with the os.|
+| **config_grub.sh** | Runs the vm once installed with the os.|
+| **config_network.sh** | Runs the vm once installed with the os.|
+| **config_ports.sh** | Runs the vm once installed with the os.|
+| **config_ssh.sh** | Runs the vm once installed with the os.|
 
 ---
 
