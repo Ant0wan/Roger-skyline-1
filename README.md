@@ -47,7 +47,6 @@ index.html
 
 ---
 
-
 ## Files description
 
 - Info file
@@ -107,7 +106,14 @@ secure = yes ( a 'no' will disable the web server deployment and all Roger-skyli
 
 ## Ports
 
-Port that was modified:
+- Open ports with services:
+
+| Port | Service |
+| --- | --- |
+| `80` | Apache2 |
+| `443` | Apache2 |
+
+- Port that was modified:
 
 | Port | Service |
 | --- | --- |
@@ -117,15 +123,15 @@ Port that was modified:
 
 ## Using this Script
 
-- Make sure you have an ethernet network insterface + Make sure you have access to the world wide web +  Install Python3.5 and VirtualBox on your machine.
-
 - Copy of the repository:
 
 ```shell=
-git clone https://github.com/Ant0wan/Roger-skyline-1.git && cd libft
+git clone https://github.com/Ant0wan/Roger-skyline-1.git && cd Roger-skyline-1.git
 ```
 
-- Modify the 'info' file with your appropriate setting.
+- Modify the `info` file with your appropriate setting.
+
+- Modify the `.git/config` repo url with yours.
 
 - Launch :
 
